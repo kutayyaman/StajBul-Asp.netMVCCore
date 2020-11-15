@@ -5,7 +5,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+    <Content Remove="wwwroot\js\bundle.js" />
+    <Content Remove="wwwroot\js\bundle.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="bundleconfig.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\bundle.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\bundle.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\bundle.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
+    <None Include="wwwroot\js\bundle.js" />
+    <None Include="wwwroot\js\bundle.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StajBul.Data\StajBul.Data.csproj" />
+    <ProjectReference Include="..\StajBul.Entity\StajBul.Entity.csproj" />
   </ItemGroup>
 
 </Project>

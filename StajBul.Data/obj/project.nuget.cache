@@ -1,8 +1,28 @@
 {
   "version": 2,
-  "dgSpecHash": "asfZtZ9imQbR/FzFnEs+WT+1liJiFC93z6oVcwuRheSuJdAX1vIW8yKkJZ5B8igcOHcVwuh2oCDKDUg37zAXsA==",
+  "dgSpecHash": "Q+0oSFL8rkFiWmET4FQlsewzLjc/wwxa/y+gGY/oVR5eef4Vze8mU8+tq4bozSa51HP5OFnUeLTvrIB2qW7lAA==",
   "success": true,
   "projectFilePath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Data\\StajBul.Data.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.0-rc.2.20475.6\\microsoft.entityframeworkcore.5.0.0-rc.2.20475.6.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.0-rc.2.20475.6\\microsoft.entityframeworkcore.abstractions.5.0.0-rc.2.20475.6.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.0-rc.2.20475.6\\microsoft.entityframeworkcore.analyzers.5.0.0-rc.2.20475.6.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.0-rc.2.20475.6\\microsoft.entityframeworkcore.relational.5.0.0-rc.2.20475.6.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0-rc.2.20475.5\\microsoft.extensions.caching.abstractions.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0-rc.2.20475.5\\microsoft.extensions.caching.memory.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0-rc.2.20475.5\\microsoft.extensions.configuration.abstractions.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0-rc.2.20475.5\\microsoft.extensions.dependencyinjection.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0-rc.2.20475.5\\microsoft.extensions.dependencyinjection.abstractions.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0-rc.2.20475.5\\microsoft.extensions.logging.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0-rc.2.20475.5\\microsoft.extensions.logging.abstractions.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.extensions.options\\5.0.0-rc.2.20475.5\\microsoft.extensions.options.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0-rc.2.20475.5\\microsoft.extensions.primitives.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\npgsql\\5.0.0-preview1\\npgsql.5.0.0-preview1.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\5.0.0-rc2\\npgsql.entityframeworkcore.postgresql.5.0.0-rc2.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\system.collections.immutable\\5.0.0-rc.2.20475.5\\system.collections.immutable.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0-rc.2.20475.5\\system.componentmodel.annotations.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0-rc.2.20475.5\\system.diagnostics.diagnosticsource.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
+  ],
   "logs": []
 }
