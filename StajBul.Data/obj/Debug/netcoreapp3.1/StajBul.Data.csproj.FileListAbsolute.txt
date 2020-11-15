@@ -6,7 +6,7 @@ C:\Users\kutay\source\repos\StajBul\StajBul.Data\obj\Debug\netcoreapp3.1\StajBul
 C:\Users\kutay\source\repos\StajBul\StajBul.Data\bin\Debug\netcoreapp3.1\StajBul.Data.pdb
 C:\Users\kutay\source\repos\StajBul\StajBul.Data\bin\Debug\netcoreapp3.1\StajBul.Entity.dll
 C:\Users\kutay\source\repos\StajBul\StajBul.Data\bin\Debug\netcoreapp3.1\StajBul.Entity.pdb
-C:\Users\kutay\source\repos\StajBul\StajBul.Data\obj\Debug\netcoreapp3.1\StajBul.Data.csproj.CoreCompileInputs.cache
 C:\Users\kutay\source\repos\StajBul\StajBul.Data\obj\Debug\netcoreapp3.1\StajBul.Data.csproj.CopyComplete
 C:\Users\kutay\source\repos\StajBul\StajBul.Data\obj\Debug\netcoreapp3.1\StajBul.Data.dll
 C:\Users\kutay\source\repos\StajBul\StajBul.Data\obj\Debug\netcoreapp3.1\StajBul.Data.pdb
+C:\Users\kutay\source\repos\StajBul\StajBul.Data\obj\Debug\netcoreapp3.1\StajBul.Data.csproj.CoreCompileInputs.cache

@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "tURjm6rfk6oj8MCJWUTHgFgD5juzKuc6MiQcchM7sSR0UWlWQPFkjjMlGlj6+WY2UzMBRnyhJA1fZC/xc4YlzA==",
+  "dgSpecHash": "/H5U9F1+T09aueiegp9Epl/WrvufTjKiK2M2Q3DO8c1NmCaxsANQZPoX5jIt6Fftj/wU5rmg/OGVHDMl8W4stA==",
   "success": true,
   "projectFilePath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.WebUI\\StajBul.WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kutay\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.razor.runtime\\2.2.0\\microsoft.aspnetcore.razor.runtime.2.2.0.nupkg.sha512",

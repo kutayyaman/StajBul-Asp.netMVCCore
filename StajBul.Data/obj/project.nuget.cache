@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Q+0oSFL8rkFiWmET4FQlsewzLjc/wwxa/y+gGY/oVR5eef4Vze8mU8+tq4bozSa51HP5OFnUeLTvrIB2qW7lAA==",
+  "dgSpecHash": "Z5Zyil2Bf6NMcvvUDqqk277DFSyZF2nz56K4KmgjndJJmADVvlPnT6fJBDIvUZvBaom+w8sOu8wUcl2dhVd8sA==",
   "success": true,
   "projectFilePath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Data\\StajBul.Data.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.0-rc.2.20475.6\\microsoft.entityframeworkcore.5.0.0-rc.2.20475.6.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.0-rc.2.20475.6\\microsoft.entityframeworkcore.abstractions.5.0.0-rc.2.20475.6.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.0-rc.2.20475.6\\microsoft.entityframeworkcore.analyzers.5.0.0-rc.2.20475.6.nupkg.sha512",
@@ -22,7 +24,8 @@
     "C:\\Users\\kutay\\.nuget\\packages\\system.collections.immutable\\5.0.0-rc.2.20475.5\\system.collections.immutable.5.0.0-rc.2.20475.5.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0-rc.2.20475.5\\system.componentmodel.annotations.5.0.0-rc.2.20475.5.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0-rc.2.20475.5\\system.diagnostics.diagnosticsource.5.0.0-rc.2.20475.5.nupkg.sha512",
-    "C:\\Users\\kutay\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
+    "C:\\Users\\kutay\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }
