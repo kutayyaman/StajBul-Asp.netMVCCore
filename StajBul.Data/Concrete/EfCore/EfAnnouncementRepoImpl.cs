@@ -23,7 +23,10 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void deleteInternshipAnnouncementById(int internshipAnnouncementId)
         {
-            context.Announcements.FromSqlRaw("DELETE FROM Announcements WHERE Id = {0};", internshipAnnouncementId);
+            InternshipAnnouncement internshipAnnouncement = new InternshipAnnouncement() { Id = internshipAnnouncementId };
+            context.Announcements.Attach(internshipAnnouncement);
+            context.Announcements.Remove(internshipAnnouncement);
+            context.SaveChanges();
         }
 
         public IQueryable<InternshipAnnouncement> getAll()

@@ -22,7 +22,10 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void deleteCategoryById(int categoryId)
         {
-            context.Categories.FromSqlRaw("DELETE FROM Categories WHERE CategoryId = {0};", categoryId);        
+            Category category = new Category() { CategoryId = categoryId };
+            context.Categories.Attach(category);
+            context.Categories.Remove(category);
+            context.SaveChanges();
         }
 
         public IQueryable<Category> getAll()

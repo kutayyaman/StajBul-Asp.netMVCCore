@@ -22,7 +22,10 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void deleteCityById(int cityId)
         {
-            context.Cities.FromSqlRaw("DELETE FROM Cities WHERE CityId = {0};", cityId);
+            City city = new City() { CityId = cityId };
+            context.Cities.Attach(city);
+            context.Cities.Remove(city);
+            context.SaveChanges();
         }
 
         public IQueryable<City> getAll()

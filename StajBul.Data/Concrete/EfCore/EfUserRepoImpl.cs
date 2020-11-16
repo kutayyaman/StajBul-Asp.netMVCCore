@@ -22,7 +22,10 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void deleteUserById(int userId)
         {
-            context.Users.FromSqlRaw("DELETE FROM Users WHERE UserId = {0};", userId);
+            User user = new User() { UserId = userId };
+            context.Users.Attach(user);
+            context.Users.Remove(user);
+            context.SaveChanges();
         }
 
         public IQueryable<User> getAll()

@@ -25,7 +25,10 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void deleteAddressById(int addressId) //buraya databasede olmayan bir id gelirse nolcak onu dene eger patlarsa sql sorgusu sıkıntılı olan yolla yaparsin
         {
-            context.Categories.FromSqlRaw("DELETE FROM Addresses WHERE AddressId = {0};", addressId);
+            Address address = new Address() { AddressId = addressId };
+            context.Addresses.Attach(address);
+            context.Addresses.Remove(address);
+            context.SaveChanges();
         }
 
         public IQueryable<Address> getAll()
