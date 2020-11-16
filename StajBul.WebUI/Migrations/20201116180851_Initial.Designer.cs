@@ -10,8 +10,8 @@ using StajBul.Data.Concrete.EfCore;
 namespace StajBul.WebUI.Migrations
 {
     [DbContext(typeof(StajBulContext))]
-    [Migration("20201115145732_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201116180851_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -152,10 +152,13 @@ namespace StajBul.WebUI.Migrations
                     b.Property<string>("Mail")
                         .HasColumnType("text");
 
+                    b.Property<string>("Pswd")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("UName")
                         .HasColumnType("text");
 
                     b.Property<string>("UserSurname")

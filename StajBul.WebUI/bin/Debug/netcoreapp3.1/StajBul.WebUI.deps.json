@@ -28,6 +28,7 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
           "StajBul.Data": "1.0.0",
           "StajBul.Entity": "1.0.0",
+          "StajBul.Service": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -1805,6 +1806,18 @@
         },
         "compile": {
           "StajBul.Entity.dll": {}
+        }
+      },
+      "StajBul.Service/1.0.0": {
+        "dependencies": {
+          "StajBul.Data": "1.0.0",
+          "StajBul.Entity": "1.0.0"
+        },
+        "runtime": {
+          "StajBul.Service.dll": {}
+        },
+        "compile": {
+          "StajBul.Service.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -4330,6 +4343,11 @@
       "sha512": ""
     },
     "StajBul.Entity/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StajBul.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -2060,6 +2060,20 @@
         "runtime": {
           "bin/placeholder/StajBul.Entity.dll": {}
         }
+      },
+      "StajBul.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "StajBul.Data": "1.0.0",
+          "StajBul.Entity": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/StajBul.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StajBul.Service.dll": {}
+        }
       }
     }
   },
@@ -6831,6 +6845,11 @@
       "type": "project",
       "path": "../StajBul.Entity/StajBul.Entity.csproj",
       "msbuildProject": "../StajBul.Entity/StajBul.Entity.csproj"
+    },
+    "StajBul.Service/1.0.0": {
+      "type": "project",
+      "path": "../StajBul.Service/StajBul.Service.csproj",
+      "msbuildProject": "../StajBul.Service/StajBul.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6838,7 +6857,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
       "StajBul.Data >= 1.0.0",
-      "StajBul.Entity >= 1.0.0"
+      "StajBul.Entity >= 1.0.0",
+      "StajBul.Service >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -6872,6 +6892,9 @@
             },
             "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Entity\\StajBul.Entity.csproj": {
               "projectPath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Entity\\StajBul.Entity.csproj"
+            },
+            "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Service\\StajBul.Service.csproj": {
+              "projectPath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Service\\StajBul.Service.csproj"
             }
           }
         }

@@ -122,6 +122,65 @@
         }
       }
     },
+    "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Service\\StajBul.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Service\\StajBul.Service.csproj",
+        "projectName": "StajBul.Service",
+        "projectPath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Service\\StajBul.Service.csproj",
+        "packagesPath": "C:\\Users\\kutay\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\kutay\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Data\\StajBul.Data.csproj": {
+                "projectPath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Data\\StajBul.Data.csproj"
+              },
+              "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Entity\\StajBul.Entity.csproj": {
+                "projectPath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Entity\\StajBul.Entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.WebUI\\StajBul.WebUI.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -150,6 +209,9 @@
               },
               "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Entity\\StajBul.Entity.csproj": {
                 "projectPath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Entity\\StajBul.Entity.csproj"
+              },
+              "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Service\\StajBul.Service.csproj": {
+                "projectPath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.Service\\StajBul.Service.csproj"
               }
             }
           }

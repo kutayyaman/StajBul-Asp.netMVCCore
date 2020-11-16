@@ -9,7 +9,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StajBul.Data.Abstract;
 using StajBul.Data.Concrete.EfCore;
+using StajBul.Service;
+using StajBul.Service.Impl;
 
 namespace StajBul.WebUI
 {
@@ -25,8 +28,21 @@ namespace StajBul.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IAddressRepo, EfAddressRepoImpl>();
+            services.AddTransient<IAnnouncementRepo, EfAnnouncementRepoImpl>();
+            services.AddTransient<ICategoryRepo, EfCategoryRepoImpl>();
+            services.AddTransient<ICityRepo, EfCityRepoImpl>();
+            services.AddTransient<IUserRepo, EfUserRepoImpl>();
+
+            services.AddTransient<IAddressService, AddressServiceImpl>();
+            services.AddTransient<IAnnouncementService, AnnouncementServiceImpl>();
+            services.AddTransient<ICategoryService, CategoryServiceImpl>();
+            services.AddTransient<ICityService, CityServiceImpl>();
+            services.AddTransient<IUserService, UserServiceImpl>();
+
             services.AddDbContext<StajBulContext>(options =>
             options.UseNpgsql(Configuration.GetConnectionString("StajBulConnection"), b=>b.MigrationsAssembly("StajBul.WebUI")));
+            
             services.AddControllersWithViews();
         }
 

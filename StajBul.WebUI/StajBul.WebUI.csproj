@@ -34,6 +34,7 @@
   <ItemGroup>
     <ProjectReference Include="..\StajBul.Data\StajBul.Data.csproj" />
     <ProjectReference Include="..\StajBul.Entity\StajBul.Entity.csproj" />
+    <ProjectReference Include="..\StajBul.Service\StajBul.Service.csproj" />
   </ItemGroup>
 
 </Project>

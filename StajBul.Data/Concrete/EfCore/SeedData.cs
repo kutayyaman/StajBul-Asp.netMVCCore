@@ -19,10 +19,10 @@ namespace StajBul.Data.Concrete.EfCore
             if (!context.Users.Any())
             {
                 context.Users.AddRange(
-                        new User() { Age = 22, Mail = "yamankutay1@gmail.com", RegistrationDate = new DateTime(), UserName = "kutayyaman", UserSurname = "yaman", UserType = UserType.USER },
-                        new User() { Age = 23, Mail = "badoonline@gmail.com", RegistrationDate = new DateTime(), UserName = "badoonline", UserSurname = "gungor", UserType = UserType.USER },
-                        new User() { Age = 22, Mail = "siresat@gmail.com", RegistrationDate = new DateTime(), UserName = "siresat", UserSurname = "genc", UserType = UserType.USER },
-                        new User() { Age = 22, Mail = "batugokalp@gmail.com", RegistrationDate = new DateTime(), UserName = "batugokalp", UserSurname = "gokalp", UserType = UserType.USER }
+                        new User() { Age = 22, Mail = "yamankutay1@gmail.com", RegistrationDate = new DateTime(), UName = "kutayyaman", UserSurname = "yaman", UserType = UserType.USER, Pswd = "1111" },
+                        new User() { Age = 23, Mail = "badoonline@gmail.com", RegistrationDate = new DateTime(), UName = "badoonline", UserSurname = "gungor", UserType = UserType.USER, Pswd = "8888" },
+                        new User() { Age = 22, Mail = "siresat@gmail.com", RegistrationDate = new DateTime(), UName = "siresat", UserSurname = "genc", UserType = UserType.USER,Pswd = "1234" },
+                        new User() { Age = 22, Mail = "batugokalp@gmail.com", RegistrationDate = new DateTime(), UName = "batugokalp", UserSurname = "gokalp", UserType = UserType.USER, Pswd = "9999" }
                     );
                 context.SaveChanges();
             }

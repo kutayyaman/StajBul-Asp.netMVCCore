@@ -7,7 +7,8 @@ namespace StajBul.Entity
     public class User
     {
         public int UserId { get; set; }
-        public string UserName { get; set; }
+        public string UName { get; set; }
+        public string Pswd { get; set; }
         public string UserSurname { get; set; }
         public int Age { get; set; }
         public DateTime RegistrationDate { get; set; }

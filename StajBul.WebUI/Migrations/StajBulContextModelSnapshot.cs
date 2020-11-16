@@ -150,10 +150,13 @@ namespace StajBul.WebUI.Migrations
                     b.Property<string>("Mail")
                         .HasColumnType("text");
 
+                    b.Property<string>("Pswd")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("UName")
                         .HasColumnType("text");
 
                     b.Property<string>("UserSurname")

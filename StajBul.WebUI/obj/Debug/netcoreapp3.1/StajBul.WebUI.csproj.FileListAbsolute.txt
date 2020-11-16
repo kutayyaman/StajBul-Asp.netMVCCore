@@ -132,3 +132,5 @@ C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\Micros
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\StajBul.WebUI.csproj.CoreCompileInputs.cache
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\StajBul.WebUI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\StajBul.Service.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\StajBul.Service.pdb
