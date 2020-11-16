@@ -10,7 +10,7 @@ using StajBul.Data.Concrete.EfCore;
 namespace StajBul.WebUI.Migrations
 {
     [DbContext(typeof(StajBulContext))]
-    [Migration("20201116180851_Initial")]
+    [Migration("20201116194848_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ namespace StajBul.WebUI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("address");
                 });
 
             modelBuilder.Entity("StajBul.Entity.Category", b =>
@@ -73,7 +73,7 @@ namespace StajBul.WebUI.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("category");
                 });
 
             modelBuilder.Entity("StajBul.Entity.City", b =>
@@ -88,7 +88,7 @@ namespace StajBul.WebUI.Migrations
 
                     b.HasKey("CityId");
 
-                    b.ToTable("Cities");
+                    b.ToTable("city");
                 });
 
             modelBuilder.Entity("StajBul.Entity.InternshipAnnouncement", b =>
@@ -136,7 +136,7 @@ namespace StajBul.WebUI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Announcements");
+                    b.ToTable("announcement");
                 });
 
             modelBuilder.Entity("StajBul.Entity.User", b =>
@@ -169,7 +169,7 @@ namespace StajBul.WebUI.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("user");
                 });
 
             modelBuilder.Entity("StajBul.Entity.Address", b =>

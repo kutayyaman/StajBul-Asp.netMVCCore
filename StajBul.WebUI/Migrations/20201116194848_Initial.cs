@@ -9,7 +9,7 @@ namespace StajBul.WebUI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "category",
                 columns: table => new
                 {
                     CategoryId = table.Column<int>(type: "integer", nullable: false)
@@ -18,11 +18,11 @@ namespace StajBul.WebUI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
+                    table.PrimaryKey("PK_category", x => x.CategoryId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cities",
+                name: "city",
                 columns: table => new
                 {
                     CityId = table.Column<int>(type: "integer", nullable: false)
@@ -31,11 +31,11 @@ namespace StajBul.WebUI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cities", x => x.CityId);
+                    table.PrimaryKey("PK_city", x => x.CityId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "user",
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "integer", nullable: false)
@@ -50,11 +50,11 @@ namespace StajBul.WebUI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
+                    table.PrimaryKey("PK_user", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Addresses",
+                name: "address",
                 columns: table => new
                 {
                     AddressId = table.Column<int>(type: "integer", nullable: false)
@@ -70,23 +70,23 @@ namespace StajBul.WebUI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Addresses", x => x.AddressId);
+                    table.PrimaryKey("PK_address", x => x.AddressId);
                     table.ForeignKey(
-                        name: "FK_Addresses_Cities_CityId",
+                        name: "FK_address_city_CityId",
                         column: x => x.CityId,
-                        principalTable: "Cities",
+                        principalTable: "city",
                         principalColumn: "CityId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Addresses_Users_UserId",
+                        name: "FK_address_user_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "user",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Announcements",
+                name: "announcement",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -104,69 +104,69 @@ namespace StajBul.WebUI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Announcements", x => x.Id);
+                    table.PrimaryKey("PK_announcement", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Announcements_Addresses_AddressId",
+                        name: "FK_announcement_address_AddressId",
                         column: x => x.AddressId,
-                        principalTable: "Addresses",
+                        principalTable: "address",
                         principalColumn: "AddressId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Announcements_Categories_CategoryId",
+                        name: "FK_announcement_category_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Categories",
+                        principalTable: "category",
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Announcements_Users_UserId",
+                        name: "FK_announcement_user_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "user",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Addresses_CityId",
-                table: "Addresses",
+                name: "IX_address_CityId",
+                table: "address",
                 column: "CityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Addresses_UserId",
-                table: "Addresses",
+                name: "IX_address_UserId",
+                table: "address",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Announcements_AddressId",
-                table: "Announcements",
+                name: "IX_announcement_AddressId",
+                table: "announcement",
                 column: "AddressId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Announcements_CategoryId",
-                table: "Announcements",
+                name: "IX_announcement_CategoryId",
+                table: "announcement",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Announcements_UserId",
-                table: "Announcements",
+                name: "IX_announcement_UserId",
+                table: "announcement",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Announcements");
+                name: "announcement");
 
             migrationBuilder.DropTable(
-                name: "Addresses");
+                name: "address");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "category");
 
             migrationBuilder.DropTable(
-                name: "Cities");
+                name: "city");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "user");
         }
     }
 }

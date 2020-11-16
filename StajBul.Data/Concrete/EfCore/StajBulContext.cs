@@ -8,7 +8,6 @@ namespace StajBul.Data.Concrete.EfCore
 
         public StajBulContext(DbContextOptions<StajBulContext> options) : base(options)
         {
-
         }
 
         public DbSet<InternshipAnnouncement> Announcements { get; set; }
