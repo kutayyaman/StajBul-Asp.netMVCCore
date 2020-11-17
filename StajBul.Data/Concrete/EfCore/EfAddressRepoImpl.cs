@@ -25,20 +25,17 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void deleteAddressById(int addressId) //buraya databasede olmayan bir id gelirse nolcak onu dene eger patlarsa sql sorgusu sıkıntılı olan yolla yaparsin
         {
-            Address address = new Address() { AddressId = addressId };
-            context.Addresses.Attach(address);
-            context.Addresses.Remove(address);
-            context.SaveChanges();
+            context.Database.ExecuteSqlRaw("UPDATE address SET \"RowStatus\" = '1' WHERE \"Id\" = {0}", addressId);
         }
 
         public IQueryable<Address> getAll()
         {
-            return context.Addresses;
+            return context.Addresses.Where(a => a.RowStatus == RowStatus.ACTIVE);
         }
 
         public Address getById(int addressId)
         {
-            return context.Addresses.FirstOrDefault(a => a.AddressId == addressId);
+            return context.Addresses.FirstOrDefault(a => a.Id == addressId && a.RowStatus == RowStatus.ACTIVE);
         }
 
         public void updateAddress(Address address)

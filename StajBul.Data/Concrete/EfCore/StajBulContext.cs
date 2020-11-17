@@ -9,11 +9,11 @@ namespace StajBul.Data.Concrete.EfCore
         public StajBulContext(DbContextOptions<StajBulContext> options) : base(options)
         {
         }
-
         public DbSet<InternshipAnnouncement> Announcements { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<User> Users { get; set; }
+
     }
 }

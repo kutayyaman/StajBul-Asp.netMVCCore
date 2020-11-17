@@ -6,9 +6,8 @@ using System.Text;
 namespace StajBul.Entity
 {
     [Table("announcement")]
-    public class InternshipAnnouncement
+    public class InternshipAnnouncement : BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Explanation { get; set; }

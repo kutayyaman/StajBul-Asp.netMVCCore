@@ -22,20 +22,17 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void deleteCityById(int cityId)
         {
-            City city = new City() { CityId = cityId };
-            context.Cities.Attach(city);
-            context.Cities.Remove(city);
-            context.SaveChanges();
+            context.Database.ExecuteSqlRaw("UPDATE city SET \"RowStatus\" = '1' WHERE \"Id\" = {0}", cityId);
         }
 
         public IQueryable<City> getAll()
         {
-            return context.Cities;
+            return context.Cities.Where(c => c.RowStatus == RowStatus.ACTIVE);
         }
 
         public City getById(int cityId)
         {
-            return context.Cities.FirstOrDefault(c => c.CityId == cityId);
+            return context.Cities.FirstOrDefault(c => c.Id == cityId && c.RowStatus == RowStatus.ACTIVE);
         }
 
         public void updateCity(City city)

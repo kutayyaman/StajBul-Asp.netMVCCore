@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace StajBul.WebUI.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,33 +12,43 @@ namespace StajBul.WebUI.Migrations
                 name: "category",
                 columns: table => new
                 {
-                    CategoryId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CategoryName = table.Column<string>(type: "text", nullable: true)
+                    CategoryName = table.Column<string>(type: "text", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "text", nullable: true),
+                    RowStatus = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_category", x => x.CategoryId);
+                    table.PrimaryKey("PK_category", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "city",
                 columns: table => new
                 {
-                    CityId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CityName = table.Column<string>(type: "text", nullable: true)
+                    CityName = table.Column<string>(type: "text", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "text", nullable: true),
+                    RowStatus = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_city", x => x.CityId);
+                    table.PrimaryKey("PK_city", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "user",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UName = table.Column<string>(type: "text", nullable: true),
                     Pswd = table.Column<string>(type: "text", nullable: true),
@@ -46,18 +56,23 @@ namespace StajBul.WebUI.Migrations
                     Age = table.Column<int>(type: "integer", nullable: false),
                     RegistrationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Mail = table.Column<string>(type: "text", nullable: true),
-                    UserType = table.Column<int>(type: "integer", nullable: false)
+                    UserType = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "text", nullable: true),
+                    RowStatus = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_user", x => x.UserId);
+                    table.PrimaryKey("PK_user", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "address",
                 columns: table => new
                 {
-                    AddressId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<int>(type: "integer", nullable: false),
                     AddressName = table.Column<string>(type: "text", nullable: true),
@@ -66,22 +81,27 @@ namespace StajBul.WebUI.Migrations
                     AddressLine1 = table.Column<string>(type: "text", nullable: true),
                     AddressLine2 = table.Column<string>(type: "text", nullable: true),
                     PostalCode = table.Column<string>(type: "text", nullable: true),
-                    Phone = table.Column<string>(type: "text", nullable: true)
+                    Phone = table.Column<string>(type: "text", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "text", nullable: true),
+                    RowStatus = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_address", x => x.AddressId);
+                    table.PrimaryKey("PK_address", x => x.Id);
                     table.ForeignKey(
                         name: "FK_address_city_CityId",
                         column: x => x.CityId,
                         principalTable: "city",
-                        principalColumn: "CityId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_address_user_UserId",
                         column: x => x.UserId,
                         principalTable: "user",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -100,7 +120,12 @@ namespace StajBul.WebUI.Migrations
                     AnnouncementType = table.Column<int>(type: "integer", nullable: false),
                     AddressId = table.Column<int>(type: "integer", nullable: false),
                     Mail = table.Column<string>(type: "text", nullable: true),
-                    AnnouncementStatus = table.Column<int>(type: "integer", nullable: false)
+                    AnnouncementStatus = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "text", nullable: true),
+                    RowStatus = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -109,19 +134,19 @@ namespace StajBul.WebUI.Migrations
                         name: "FK_announcement_address_AddressId",
                         column: x => x.AddressId,
                         principalTable: "address",
-                        principalColumn: "AddressId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_announcement_category_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "category",
-                        principalColumn: "CategoryId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_announcement_user_UserId",
                         column: x => x.UserId,
                         principalTable: "user",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 

@@ -23,20 +23,17 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void deleteInternshipAnnouncementById(int internshipAnnouncementId)
         {
-            InternshipAnnouncement internshipAnnouncement = new InternshipAnnouncement() { Id = internshipAnnouncementId };
-            context.Announcements.Attach(internshipAnnouncement);
-            context.Announcements.Remove(internshipAnnouncement);
-            context.SaveChanges();
+            context.Database.ExecuteSqlRaw("UPDATE announcement SET \"RowStatus\" = '1' WHERE \"Id\" = {0}", internshipAnnouncementId);
         }
 
         public IQueryable<InternshipAnnouncement> getAll()
         {
-            return context.Announcements;
+            return context.Announcements.Where(a => a.RowStatus == RowStatus.ACTIVE);
         }
 
         public InternshipAnnouncement getById(int internshipAnnouncementId)
         {
-            return context.Announcements.FirstOrDefault(i => i.Id == internshipAnnouncementId);
+            return context.Announcements.FirstOrDefault(i => i.Id == internshipAnnouncementId && i.RowStatus == RowStatus.ACTIVE);
         }
 
         public void updateInternshipAnnouncement(InternshipAnnouncement internshipAnnouncement)

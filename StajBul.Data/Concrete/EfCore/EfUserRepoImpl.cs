@@ -22,20 +22,17 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void deleteUserById(int userId)
         {
-            User user = new User() { UserId = userId };
-            context.Users.Attach(user);
-            context.Users.Remove(user);
-            context.SaveChanges();
+            context.Database.ExecuteSqlRaw("UPDATE user SET \"RowStatus\" = '1' WHERE \"Id\" = {0}", userId);
         }
 
         public IQueryable<User> getAll()
         {
-            return context.Users;
+            return context.Users.Where(u => u.RowStatus == RowStatus.ACTIVE);
         }
 
         public User getById(int userId)
         {
-            return context.Users.FirstOrDefault(u => u.UserId == userId);
+            return context.Users.FirstOrDefault(u => u.Id == userId && u.RowStatus == RowStatus.ACTIVE);
         }
 
         public void updateUser(User user)

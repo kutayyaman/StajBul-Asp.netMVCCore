@@ -10,8 +10,8 @@ using StajBul.Data.Concrete.EfCore;
 namespace StajBul.WebUI.Migrations
 {
     [DbContext(typeof(StajBulContext))]
-    [Migration("20201116194848_Initial")]
-    partial class Initial
+    [Migration("20201117120043_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace StajBul.WebUI.Migrations
 
             modelBuilder.Entity("StajBul.Entity.Address", b =>
                 {
-                    b.Property<int>("AddressId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
@@ -40,8 +40,20 @@ namespace StajBul.WebUI.Migrations
                     b.Property<int>("CityId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("District")
                         .HasColumnType("text");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Phone")
                         .HasColumnType("text");
@@ -49,10 +61,13 @@ namespace StajBul.WebUI.Migrations
                     b.Property<string>("PostalCode")
                         .HasColumnType("text");
 
+                    b.Property<int>("RowStatus")
+                        .HasColumnType("integer");
+
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
-                    b.HasKey("AddressId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CityId");
 
@@ -63,7 +78,7 @@ namespace StajBul.WebUI.Migrations
 
             modelBuilder.Entity("StajBul.Entity.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
@@ -71,14 +86,29 @@ namespace StajBul.WebUI.Migrations
                     b.Property<string>("CategoryName")
                         .HasColumnType("text");
 
-                    b.HasKey("CategoryId");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("RowStatus")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
 
                     b.ToTable("category");
                 });
 
             modelBuilder.Entity("StajBul.Entity.City", b =>
                 {
-                    b.Property<int>("CityId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
@@ -86,7 +116,22 @@ namespace StajBul.WebUI.Migrations
                     b.Property<string>("CityName")
                         .HasColumnType("text");
 
-                    b.HasKey("CityId");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("RowStatus")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
 
                     b.ToTable("city");
                 });
@@ -110,6 +155,12 @@ namespace StajBul.WebUI.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("timestamp without time zone");
 
@@ -119,8 +170,17 @@ namespace StajBul.WebUI.Migrations
                     b.Property<string>("Mail")
                         .HasColumnType("text");
 
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
+
+                    b.Property<int>("RowStatus")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");
@@ -141,7 +201,7 @@ namespace StajBul.WebUI.Migrations
 
             modelBuilder.Entity("StajBul.Entity.User", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
@@ -149,14 +209,29 @@ namespace StajBul.WebUI.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("integer");
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("Mail")
                         .HasColumnType("text");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Pswd")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("RowStatus")
+                        .HasColumnType("integer");
 
                     b.Property<string>("UName")
                         .HasColumnType("text");
@@ -167,7 +242,7 @@ namespace StajBul.WebUI.Migrations
                     b.Property<int>("UserType")
                         .HasColumnType("integer");
 
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
                     b.ToTable("user");
                 });

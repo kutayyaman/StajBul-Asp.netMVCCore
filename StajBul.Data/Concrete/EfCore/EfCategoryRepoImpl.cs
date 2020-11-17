@@ -22,20 +22,17 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void deleteCategoryById(int categoryId)
         {
-            Category category = new Category() { CategoryId = categoryId };
-            context.Categories.Attach(category);
-            context.Categories.Remove(category);
-            context.SaveChanges();
+            context.Database.ExecuteSqlRaw("UPDATE category SET \"RowStatus\" = '1' WHERE \"Id\" = {0}", categoryId);
         }
 
         public IQueryable<Category> getAll()
         {
-            return context.Categories;
+            return context.Categories.Where(c => c.RowStatus == RowStatus.ACTIVE);
         }
 
         public Category getById(int categoryId)
         {
-            return context.Categories.FirstOrDefault(c => c.CategoryId == categoryId);
+            return context.Categories.FirstOrDefault(c => c.Id == categoryId && c.RowStatus == RowStatus.ACTIVE);
         }
 
         public void updateCategory(Category category)

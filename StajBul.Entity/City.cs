@@ -6,9 +6,8 @@ using System.Text;
 namespace StajBul.Entity
 {
     [Table("city")]
-    public class City
+    public class City : BaseEntity
     {
-        public int CityId { get; set; }
         public string CityName { get; set; }
 
     }
