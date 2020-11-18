@@ -1,0 +1,20 @@
+﻿@model StajBul.Entity.Category
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <h1>Kategori Oluştur</h1>
+    <hr />
+
+    <form asp-controller="Category" asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="CategoryName" >Kategori Adı</label>
+            <input asp-for="CategoryName" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">Kategori Oluştur</button>
+    </form>
+
+</div>
+
+

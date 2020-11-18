@@ -18,6 +18,7 @@ namespace StajBul.Data.Concrete.EfCore
         public void addCity(City city)
         {
             context.Cities.Add(city);
+            context.SaveChanges();
         }
 
         public void deleteCityById(int cityId)

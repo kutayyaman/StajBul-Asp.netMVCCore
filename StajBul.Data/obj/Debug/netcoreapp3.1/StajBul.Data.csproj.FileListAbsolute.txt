@@ -10,3 +10,6 @@ C:\Users\kutay\source\repos\StajBul\StajBul.Data\obj\Debug\netcoreapp3.1\StajBul
 C:\Users\kutay\source\repos\StajBul\StajBul.Data\obj\Debug\netcoreapp3.1\StajBul.Data.dll
 C:\Users\kutay\source\repos\StajBul\StajBul.Data\obj\Debug\netcoreapp3.1\StajBul.Data.pdb
 C:\Users\kutay\source\repos\StajBul\StajBul.Data\obj\Debug\netcoreapp3.1\StajBul.Data.csproj.CoreCompileInputs.cache
+C:\Users\kutay\source\repos\StajBul\StajBul.Data\bin\Debug\netcoreapp3.1\StajBul.Data.runtimeconfig.json
+C:\Users\kutay\source\repos\StajBul\StajBul.Data\bin\Debug\netcoreapp3.1\StajBul.Data.runtimeconfig.dev.json
+C:\Users\kutay\source\repos\StajBul\StajBul.Data\obj\Debug\netcoreapp3.1\StajBul.Data.genruntimeconfig.cache

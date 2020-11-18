@@ -1,4 +1,4 @@
-﻿
+﻿@model InternshipAnnouncement
 @{
     ViewData["Title"] = "Details";
 }
@@ -18,15 +18,16 @@
 
             <div class="card text-center">
                 <div class="card-header">
-                    Featured
+                    @Model.Name
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">@Model.Title</h5>
+                    <small class="card-subtitle mb-2 text-muted">@Model.Category.CategoryName</small>
+                    <p class="card-text">@Model.Explanation <br />@Model.Address?.City<br />@Model.Address?.District<br />@Model.Address?.AddressLine1<br />@Model.Address?.AddressLine2<br />@Model.Address?.PostalCode<br />@Model.Mail </p>
+                    <a href='javascript:history.go(-1)' class="btn btn-primary">Geri Git</a>
                 </div>
-                <div class="card-footer text-muted">
-                    2 days ago
+                <div class="card-footer ">
+                    @Model.CreatedDate
                 </div>
             </div>
     </div>

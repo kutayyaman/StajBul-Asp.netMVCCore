@@ -30,6 +30,16 @@ namespace StajBul.Service.Impl
             return announcementRepo.getAll();
         }
 
+        public IQueryable<InternshipAnnouncement> getAllCompanyAnnouncement()
+        {
+            return announcementRepo.getAllCompanyAnnouncement();
+        }
+
+        public IQueryable<InternshipAnnouncement> getAllStajyerAnnouncement()
+        {
+            return announcementRepo.getAllStajyerAnnouncement();
+        }
+
         public InternshipAnnouncement getById(int internshipAnnouncementId)
         {
             return announcementRepo.getById(internshipAnnouncementId);

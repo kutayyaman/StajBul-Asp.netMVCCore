@@ -18,6 +18,7 @@ namespace StajBul.Data.Concrete.EfCore
         public void addCategory(Category category)
         {
             context.Categories.Add(category);
+            context.SaveChanges();
         }
 
         public void deleteCategoryById(int categoryId)

@@ -28,12 +28,22 @@ namespace StajBul.Data.Concrete.EfCore
 
         public IQueryable<InternshipAnnouncement> getAll()
         {
-            return context.Announcements.Where(a => a.RowStatus == RowStatus.ACTIVE);
+            return context.Announcements.Include(a => a.Category).Include(a => a.User).Where(a => a.RowStatus == RowStatus.ACTIVE).OrderByDescending(a => a.Id);
+        }
+
+        public IQueryable<InternshipAnnouncement> getAllStajyerAnnouncement()
+        {
+            return context.Announcements.Include(a => a.Category).Include(a => a.Address.City).Where(a => a.RowStatus == RowStatus.ACTIVE && a.AnnouncementType == AnnouncementType.STAJYER).OrderByDescending(a => a.Id);
+        }
+
+        public IQueryable<InternshipAnnouncement> getAllCompanyAnnouncement()
+        {
+            return context.Announcements.Include(a => a.Category).Include(a => a.Address.City).Where(a => a.RowStatus == RowStatus.ACTIVE && a.AnnouncementType == AnnouncementType.COMPANY).OrderByDescending(a => a.Id);
         }
 
         public InternshipAnnouncement getById(int internshipAnnouncementId)
         {
-            return context.Announcements.FirstOrDefault(i => i.Id == internshipAnnouncementId && i.RowStatus == RowStatus.ACTIVE);
+            return context.Announcements.Include(i => i.Address).Include(i => i.Category).FirstOrDefault(i => i.Id == internshipAnnouncementId && i.RowStatus == RowStatus.ACTIVE); //Lazy loading oldugu icin Include ile cagirdim.
         }
 
         public void updateInternshipAnnouncement(InternshipAnnouncement internshipAnnouncement)

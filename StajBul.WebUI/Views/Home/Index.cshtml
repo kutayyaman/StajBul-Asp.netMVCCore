@@ -16,27 +16,54 @@
     </div>
     <div class="col-md-9">
 
-        <div class="row">
-            @foreach (var announcement in Model)
-            {
-                <div class="col-md-4">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h4 class="cart-title">
-                                <a href="#">@announcement.Title</a>
-                            </h4>
-                            <small class="card-subtitle mb-2 text-muted">@announcement.CreationDate</small>
-                            <h6 class="text-muted">
-                                @announcement.Explanation
-                            </h6>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button class="btn btn-outline-primary btn-sm mb-2">İlani Görüntüle</button>
+        @if (Model.Count() > 0)
+        {
+            <div class="row">
+                @foreach (var announcement in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h4 class="cart-title">
+                                    <a asp-controller="Home" asp-action="Details" asp-route-id="@announcement.Id">
+                                        @if (@announcement.Title.Length > 42)
+                                        {
+                                            @announcement.Title.Substring(0, 42)<h6>...</h6>
+                                        }
+                                        else
+                                        {
+                                            @announcement.Title
+                                        }
+                                    </a>
+                                </h4>
+                                <small class="card-subtitle mb-2 text-muted">@announcement.CreatedDate</small>
+                                <br />
+                                <small class="card-subtitle mb-2 text-muted">@announcement.Category.CategoryName</small>
+                                <br />
+                                <small class="card-subtitle mb-2 text-muted">@announcement.Address.City.CityName</small>
+                                @if (@announcement.Explanation.Length > 55)
+                                {
+                                    <h6 class="text-muted">@announcement.Explanation.Substring(0, 55) ...</h6>
+                                }
+                                else
+                                {
+                                    <h6 class="text-muted">@announcement.Explanation</h6>
+                                }
+                            </div>
+                            <div class="card-footer text-center">
+                                <a class="btn btn-outline-primary btn-sm mb-2" asp-controller="Home" asp-action="Details" asp-route-id="@announcement.Id">İlani Görüntüle</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info"> Buraya Henüz İlan Eklenmemiş. </div>
+        }
+
     </div>
 </div>
+
 

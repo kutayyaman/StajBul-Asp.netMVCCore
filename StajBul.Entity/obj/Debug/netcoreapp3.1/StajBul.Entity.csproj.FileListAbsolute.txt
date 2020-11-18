@@ -4,6 +4,9 @@ C:\Users\kutay\source\repos\StajBul\StajBul.Entity\bin\Debug\netcoreapp3.1\StajB
 C:\Users\kutay\source\repos\StajBul\StajBul.Entity\obj\Debug\netcoreapp3.1\StajBul.Entity.csprojAssemblyReference.cache
 C:\Users\kutay\source\repos\StajBul\StajBul.Entity\obj\Debug\netcoreapp3.1\StajBul.Entity.AssemblyInfoInputs.cache
 C:\Users\kutay\source\repos\StajBul\StajBul.Entity\obj\Debug\netcoreapp3.1\StajBul.Entity.AssemblyInfo.cs
-C:\Users\kutay\source\repos\StajBul\StajBul.Entity\obj\Debug\netcoreapp3.1\StajBul.Entity.csproj.CoreCompileInputs.cache
 C:\Users\kutay\source\repos\StajBul\StajBul.Entity\obj\Debug\netcoreapp3.1\StajBul.Entity.dll
 C:\Users\kutay\source\repos\StajBul\StajBul.Entity\obj\Debug\netcoreapp3.1\StajBul.Entity.pdb
+C:\Users\kutay\source\repos\StajBul\StajBul.Entity\bin\Debug\netcoreapp3.1\StajBul.Entity.runtimeconfig.json
+C:\Users\kutay\source\repos\StajBul\StajBul.Entity\bin\Debug\netcoreapp3.1\StajBul.Entity.runtimeconfig.dev.json
+C:\Users\kutay\source\repos\StajBul\StajBul.Entity\obj\Debug\netcoreapp3.1\StajBul.Entity.csproj.CoreCompileInputs.cache
+C:\Users\kutay\source\repos\StajBul\StajBul.Entity\obj\Debug\netcoreapp3.1\StajBul.Entity.genruntimeconfig.cache

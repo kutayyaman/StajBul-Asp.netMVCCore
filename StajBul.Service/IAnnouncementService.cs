@@ -9,6 +9,8 @@ namespace StajBul.Service
     public interface IAnnouncementService
     {
         IQueryable<InternshipAnnouncement> getAll();
+        IQueryable<InternshipAnnouncement> getAllStajyerAnnouncement();
+        IQueryable<InternshipAnnouncement> getAllCompanyAnnouncement();
         InternshipAnnouncement getById(int internshipAnnouncementId);
         void addInternshipAnnouncement(InternshipAnnouncement internshipAnnouncement);
         void updateInternshipAnnouncement(InternshipAnnouncement internshipAnnouncement);

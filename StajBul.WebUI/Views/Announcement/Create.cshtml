@@ -1,0 +1,69 @@
+﻿@model InternshipAnnouncement
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <h1>İlan Oluştur</h1>
+    <hr />
+
+    <form asp-controller="Announcement" asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="Name">İlan Adı</label>
+            <input asp-for="Name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Title" >İlan Başlığı</label>
+            <input asp-for="Title" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryId">Kategori Seçin</label>
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.categories">
+                <option disabled selected value="">Kategori Seçin</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Explanation">İlan İçeriği</label>
+            <textarea asp-for="Explanation" class="form-control" rows="6"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="AnnouncementType">İlan Veren Kişi Stajyer Mi Yoksa İş Veren Mi?</label>
+            <select asp-for="AnnouncementType" class="form-control" asp-items="@new SelectList(Enum.GetNames(typeof(AnnouncementType)))"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address.AddressName">Adres Adı</label>
+            <input asp-for="Address.AddressName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Address.City.CityName">İl Adı</label>
+            <input asp-for="Address.City.CityName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Address.District">İlçe Adı</label>
+            <input asp-for="Address.District" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Address.AddressLine1">Adres Bilgileri</label>
+            <textarea asp-for="Address.AddressLine1" class="form-control" rows="6"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address.AddressLine2">Adres Bilgileri Devamini Buraya Yazabilirsiniz</label>
+            <textarea asp-for="Address.AddressLine2" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address.PostalCode">Posta Kodu</label>
+            <input asp-for="Address.PostalCode" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Address.Phone" >Telefon Numarası</label>
+            <input asp-for="Address.Phone" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Mail" >Mail</label>
+            <input asp-for="Mail" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">İlan Ver</button>
+    </form>
+
+</div>
+

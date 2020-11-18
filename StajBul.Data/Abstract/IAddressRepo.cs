@@ -13,5 +13,6 @@ namespace StajBul.Data.Abstract
         void addAddress(Address address);
         void updateAddress(Address address);
         void deleteAddressById(int addressId);
+        int getNextId();
     }
 }

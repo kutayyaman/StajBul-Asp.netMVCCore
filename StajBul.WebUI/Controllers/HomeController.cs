@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using StajBul.Entity;
 using StajBul.Service;
 
 namespace StajBul.WebUI.Controllers
@@ -10,22 +11,20 @@ namespace StajBul.WebUI.Controllers
     public class HomeController : Controller
     {
         private IAnnouncementService announcementService;
-        private ICategoryService categoryService;
-
-        public HomeController(IAnnouncementService announcementService, ICategoryService categoryService)
+        public HomeController(IAnnouncementService announcementService)
         {
             this.announcementService = announcementService;
-            this.categoryService = categoryService;
         }
-        public IActionResult Index()
+        public IActionResult Index(bool? isIntern)
         {
-            return View(announcementService.getAll());
+            IQueryable<InternshipAnnouncement> announcements = (isIntern == true) ? announcementService.getAllStajyerAnnouncement() : announcementService.getAllCompanyAnnouncement();
+            return View(announcements);
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            InternshipAnnouncement announcement = announcementService.getById(id);
+            return View(announcement);
         }
-
     }
 }

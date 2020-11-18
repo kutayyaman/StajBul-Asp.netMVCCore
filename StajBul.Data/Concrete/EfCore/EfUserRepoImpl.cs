@@ -18,6 +18,7 @@ namespace StajBul.Data.Concrete.EfCore
         public void addUser(User user)
         {
             context.Users.Add(user);
+            context.SaveChanges();
         }
 
         public void deleteUserById(int userId)
@@ -27,7 +28,7 @@ namespace StajBul.Data.Concrete.EfCore
 
         public IQueryable<User> getAll()
         {
-            return context.Users.Where(u => u.RowStatus == RowStatus.ACTIVE);
+            return context.Users.Where(u => u.RowStatus == RowStatus.ACTIVE).OrderByDescending(u => u.Id);
         }
 
         public User getById(int userId)

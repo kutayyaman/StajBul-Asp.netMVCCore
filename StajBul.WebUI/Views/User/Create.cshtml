@@ -1,0 +1,35 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <h1>Üye Ol</h1>
+    <hr />
+
+    <form asp-controller="User" asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="UName">Adınız</label>
+            <input asp-for="UName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="UserSurname">Soyadınız</label>
+            <input asp-for="UserSurname" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Mail">Mail Adresiniz</label>
+            <input asp-for="Mail" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Pswd">Şifreniz</label>
+            <input type="password" asp-for="Pswd" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Age">Yaşınız</label>
+            <input asp-for="Age" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">Üye Ol</button>
+    </form>
+
+</div>
+

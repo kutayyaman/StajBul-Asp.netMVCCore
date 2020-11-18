@@ -12,3 +12,6 @@ C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Debug\netcoreapp3.1\Staj
 C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Debug\netcoreapp3.1\StajBul.Service.csproj.CopyComplete
 C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Debug\netcoreapp3.1\StajBul.Service.dll
 C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Debug\netcoreapp3.1\StajBul.Service.pdb
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\bin\Debug\netcoreapp3.1\StajBul.Service.runtimeconfig.json
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\bin\Debug\netcoreapp3.1\StajBul.Service.runtimeconfig.dev.json
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Debug\netcoreapp3.1\StajBul.Service.genruntimeconfig.cache

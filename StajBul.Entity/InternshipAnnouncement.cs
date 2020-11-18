@@ -11,7 +11,6 @@ namespace StajBul.Entity
         public string Name { get; set; }
         public string Title { get; set; }
         public string Explanation { get; set; }
-        public DateTime CreationDate { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
         public int CategoryId { get; set; }
@@ -20,7 +19,6 @@ namespace StajBul.Entity
         public int AddressId { get; set; }
         public Address Address { get; set; }
         public string Mail { get; set; }
-        public AnnouncementStatus AnnouncementStatus { get; set; }
 
     }
 
@@ -28,10 +26,5 @@ namespace StajBul.Entity
     {
         STAJYER,
         COMPANY
-    }
-    public enum AnnouncementStatus
-    {
-        ACTIVE,
-        DELETED
     }
 }

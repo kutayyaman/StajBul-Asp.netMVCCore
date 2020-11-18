@@ -35,6 +35,11 @@ namespace StajBul.Service.Impl
             return addressRepo.getById(addressId);
         }
 
+        public int getNextId()
+        {
+            return addressRepo.getNextId();
+        }
+
         public void updateAddress(Address address)
         {
             addressRepo.updateAddress(address);

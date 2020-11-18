@@ -23,6 +23,11 @@ namespace StajBul.Data.Concrete.EfCore
             context.SaveChanges();
         }
 
+        public int getNextId()
+        {
+            return context.Addresses.Max(c => c.Id) + 1;
+        }
+
         public void deleteAddressById(int addressId) //buraya databasede olmayan bir id gelirse nolcak onu dene eger patlarsa sql sorgusu sıkıntılı olan yolla yaparsin
         {
             context.Database.ExecuteSqlRaw("UPDATE address SET \"RowStatus\" = '1' WHERE \"Id\" = {0}", addressId);

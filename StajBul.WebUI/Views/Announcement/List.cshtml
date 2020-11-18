@@ -1,0 +1,63 @@
+﻿@model IEnumerable<InternshipAnnouncement>
+@{
+    ViewData["Title"] = "List";
+}
+
+
+<div class="container">
+    <h1>İlanların Listesi</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model.Count() > 0)
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Title</th>
+                                <th>Explanation</th>
+                                <th>CreatedDate</th>
+                                <th>CategoryName</th>
+                                <th>AnnouncementType</th>
+                                <th>Mail</th>
+                                <th>Username of announcer</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var announcement in Model)
+                            {
+                                <tr>
+                                    <td>@announcement.Id</td>
+                                    <td>@announcement.Name</td>
+                                    <td>@announcement.Title</td>
+                                    <td>@announcement.Explanation</td>
+                                    <td>@announcement.CreatedDate</td>
+                                    <td>@announcement.Category.CategoryName</td>
+                                    <td>@announcement.AnnouncementType</td>
+                                    <td>@announcement.Mail</td>
+                                    <td>@announcement.User.UName</td>
+                                    <td>
+                                        <a class="btn btn-danger btn-sm" asp-controller="Announcement" asp-action="Delete" asp-route-id="@announcement.Id">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    İlan Eklenmemiş.
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
