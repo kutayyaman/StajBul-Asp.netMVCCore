@@ -1,0 +1,10 @@
+﻿@model CategoryFilterModel
+<form asp-controller="Home" asp-action="Index" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
+    <input id="searchedWords" name="searchedWords" class="form-control form-control-sm w-75" type="text" placeholder="İlan Ara"
+           aria-label="Search">
+    <input asp-for="CategoryId" hidden />
+    <input asp-for="IsIntern" hidden />
+    <button type="submit" class="btn btn-info btn-sm">
+        <i class="fas fa-search" aria-hidden="true"></i>
+    </button>
+</form>

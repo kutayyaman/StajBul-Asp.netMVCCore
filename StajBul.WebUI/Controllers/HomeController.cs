@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StajBul.Entity;
 using StajBul.Service;
+using StajBul.WebUI.Models;
 
 namespace StajBul.WebUI.Controllers
 {
@@ -15,10 +16,11 @@ namespace StajBul.WebUI.Controllers
         {
             this.announcementService = announcementService;
         }
-        public IActionResult Index(bool? isIntern)
+        public IActionResult Index(bool? isIntern, int? categoryId, string? searchedWords)
         {
-            IQueryable<InternshipAnnouncement> announcements = (isIntern == true) ? announcementService.getAllStajyerAnnouncement() : announcementService.getAllCompanyAnnouncement();
-            return View(announcements);
+            CategoryFilterModel categoryFilterModel = new CategoryFilterModel(categoryId,isIntern,searchedWords);
+            ViewBag.categoryFilterModel = categoryFilterModel;
+            return View();
         }
 
         public IActionResult Details(int id)

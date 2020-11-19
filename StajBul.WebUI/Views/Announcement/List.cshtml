@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<InternshipAnnouncement>
 @{
     ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 
@@ -18,12 +19,11 @@
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Title</th>
-                                <th>Explanation</th>
                                 <th>CreatedDate</th>
                                 <th>CategoryName</th>
                                 <th>AnnouncementType</th>
                                 <th>Mail</th>
-                                <th>Username of announcer</th>
+                                <th>Username</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -34,13 +34,14 @@
                                     <td>@announcement.Id</td>
                                     <td>@announcement.Name</td>
                                     <td>@announcement.Title</td>
-                                    <td>@announcement.Explanation</td>
+                                    
                                     <td>@announcement.CreatedDate</td>
                                     <td>@announcement.Category.CategoryName</td>
                                     <td>@announcement.AnnouncementType</td>
                                     <td>@announcement.Mail</td>
                                     <td>@announcement.User.UName</td>
                                     <td>
+                                        <a class="btn btn-primary btn-sm" asp-controller="Announcement" asp-action="Edit" asp-route-id="@announcement.Id">Güncelle</a>
                                         <a class="btn btn-danger btn-sm" asp-controller="Announcement" asp-action="Delete" asp-route-id="@announcement.Id">Sil</a>
                                     </td>
                                 </tr>

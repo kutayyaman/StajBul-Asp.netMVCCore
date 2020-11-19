@@ -4,17 +4,7 @@
 }
 
 <div class="row">
-    <div class="col-md-3">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active">
-                Cras justo odio
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-        </div>
-    </div>
-    <div class="col-md-9">
+    <div class="col-md-12">
 
             <div class="card text-center">
                 <div class="card-header">
@@ -23,7 +13,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@Model.Title</h5>
                     <small class="card-subtitle mb-2 text-muted">@Model.Category.CategoryName</small>
-                    <p class="card-text">@Model.Explanation <br />@Model.Address?.City<br />@Model.Address?.District<br />@Model.Address?.AddressLine1<br />@Model.Address?.AddressLine2<br />@Model.Address?.PostalCode<br />@Model.Mail </p>
+                    <p class="card-text">@Model.Explanation <br />@Model.Address?.City.CityName<br />@Model.Address?.District<br />@Model.Address?.AddressLine1<br />@Model.Address?.AddressLine2<br />@Model.Address?.PostalCode<br />@Model.Mail </p>
                     <a href='javascript:history.go(-1)' class="btn btn-primary">Geri Git</a>
                 </div>
                 <div class="card-footer ">

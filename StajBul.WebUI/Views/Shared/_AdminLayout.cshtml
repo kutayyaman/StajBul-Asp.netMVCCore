@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin</title>
+    <link href="~/css/bundle.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+        <div class="container">
+
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand">Admin</a>
+
+            <ul class="navbar-nav mr-auto">
+                <li class="navbar-nav">
+                    <a asp-controller="Home" asp-action="Index" asp-route-isIntern=false class="nav-link active">Staj Yeri İlanları</a>
+                </li>
+                <li class="navbar-nav">
+                    <a asp-controller="Home" asp-action="Index" asp-route-isIntern=true class="nav-link active">Staj Arama İlanları</a>
+                </li>
+                <li class="navbar-nav">
+                    <a asp-controller="User" asp-action="Create" class="nav-link active">Kullanıcı Oluştur</a>
+                </li>
+                <li class="navbar-nav">
+                    <a asp-controller="User" asp-action="List" class="nav-link active">Kullanıcıları Listele</a>
+                </li>
+                <li class="navbar-nav">
+                    <a asp-controller="Announcement" asp-action="Create" class="nav-link active">İlan Oluştur</a>
+                </li>
+                <li class="navbar-nav">
+                    <a asp-controller="Announcement" asp-action="List" class="nav-link active">İlanları Listele</a>
+                </li>
+                <li class="navbar-nav">
+                    <a asp-controller="Category" asp-action="Create" class="nav-link active">Kategori Oluştur</a>
+                </li>
+                <li class="navbar-nav">
+                    <a asp-controller="Category" asp-action="List" class="nav-link active">Kategorileri Listele</a>
+                </li>
+                <li class="navbar-nav">
+                    <a href="" class="nav-link active">Hakkında</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="navbar-nav">
+                    <a asp-controller="User" asp-action="Create" class="nav-link active">
+                        Üye Ol
+                        <i class="fas fa-user-plus"></i>
+                    </a>
+                </li>
+                <li class="navbar-nav">
+                    <a href="" class="nav-link active">
+                        Giriş Yap
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                </li>
+                <li class="navbar-nav">
+                    <a href="" class="nav-link active">
+                        Çıkış Yap
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["message"]
+            </div>
+        }
+        @RenderBody()
+    </div>
+
+
+    <script src="~/js/bundle.js"></script>
+</body>
+</html>

@@ -15,6 +15,8 @@ namespace StajBul.Data.Abstract
         void addInternshipAnnouncement(InternshipAnnouncement internshipAnnouncement);
         void updateInternshipAnnouncement(InternshipAnnouncement internshipAnnouncement);
         void deleteInternshipAnnouncementById(int internshipAnnouncementId);
+        IQueryable<InternshipAnnouncement> getAllCompanyAnnouncementByCategoryId(int categoryId);
+        IQueryable<InternshipAnnouncement> getAllStajyerAnnouncementByCategoryId(int categoryId);
 
     }
 }

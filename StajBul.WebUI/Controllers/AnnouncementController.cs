@@ -61,7 +61,45 @@ namespace StajBul.WebUI.Controllers
                 return RedirectToAction("List");
             }
 
+            ViewBag.categories = new SelectList(categoryService.getAll(), "Id", "CategoryName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
             return View(announcement);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.categories = new SelectList(categoryService.getAll(), "Id", "CategoryName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
+            return View(announcementService.getById(id));
+        }
+
+        [HttpPost]
+        public IActionResult EditPost(InternshipAnnouncement announcement)
+        {
+            if (ModelState.IsValid)
+            {
+                announcement.ModifiedDate = DateTime.Now.ToString();
+                announcementService.updateInternshipAnnouncement(announcement);
+                TempData["message"] = $"{announcement.Title} Güncellendi.";
+                return RedirectToAction("List");
+            }
+
+            ViewBag.categories = new SelectList(categoryService.getAll(), "Id", "CategoryName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
+            return View(announcement);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(announcementService.getById(id));
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirm(int id)
+        {
+            announcementService.deleteInternshipAnnouncementById(id);
+            TempData["message"] = id+ "id'li Kayıt Silindi.";
+            return RedirectToAction("List");
+        }
+
     }
 }

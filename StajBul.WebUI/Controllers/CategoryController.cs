@@ -47,5 +47,39 @@ namespace StajBul.WebUI.Controllers
             
             return View(category);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            return View(categoryService.getById(id));
+        }
+
+        [HttpPost]
+        public IActionResult EditPost(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                category.ModifiedDate = DateTime.Now.ToString();
+                categoryService.updateCategory(category);
+                TempData["message"] = $"{category.CategoryName} Güncellendi.";
+                return RedirectToAction("List");
+            }
+
+            return View(category);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(categoryService.getById(id));
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirm(int id)
+        {
+            categoryService.deleteCategoryById(id);
+            TempData["message"] = id + "id'li Kayıt Silindi.";
+            return RedirectToAction("List");
+        }
     }
 }

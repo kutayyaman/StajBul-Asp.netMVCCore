@@ -1,0 +1,18 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div class="text-info">ID </div> @Model.Id
+<div class="text-info">Mail Adresi </div> @Model.Mail
+<div class="text-info">Name </div> @Model.UName
+<div class="text-info">Surname </div> @Model.UserSurname
+<h4>
+    Silmek İstiyor Musunuz?
+</h4>
+<form asp-controller="User" asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger btn-lg btn-block">Sil</button>
+</form>
+

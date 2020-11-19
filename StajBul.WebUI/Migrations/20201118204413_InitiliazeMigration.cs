@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace StajBul.WebUI.Migrations
 {
-    public partial class InitializeMigration : Migration
+    public partial class InitiliazeMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,7 +44,7 @@ namespace StajBul.WebUI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "user",
+                name: "user_table",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -63,7 +63,7 @@ namespace StajBul.WebUI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_user", x => x.Id);
+                    table.PrimaryKey("PK_user_table", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,9 +96,9 @@ namespace StajBul.WebUI.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_address_user_UserId",
+                        name: "FK_address_user_table_UserId",
                         column: x => x.UserId,
-                        principalTable: "user",
+                        principalTable: "user_table",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -139,9 +139,9 @@ namespace StajBul.WebUI.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_announcement_user_UserId",
+                        name: "FK_announcement_user_table_UserId",
                         column: x => x.UserId,
-                        principalTable: "user",
+                        principalTable: "user_table",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -187,7 +187,7 @@ namespace StajBul.WebUI.Migrations
                 name: "city");
 
             migrationBuilder.DropTable(
-                name: "user");
+                name: "user_table");
         }
     }
 }

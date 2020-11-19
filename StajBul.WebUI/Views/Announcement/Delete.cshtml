@@ -1,0 +1,15 @@
+﻿@model InternshipAnnouncement
+@{
+    ViewData["Title"] = "Delete";
+}
+    
+    <div class="text-info">ID </div> @Model.Id
+    <div class="text-info">BAŞLIK </div> @Model.Title
+    <div class="text-info">AÇIKLAMA </div> @Model.Explanation
+    <h4>
+        Silmek İstiyor Musunuz?
+    </h4>
+<form asp-controller="Announcement" asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger btn-lg btn-block">Sil</button>
+</form> 

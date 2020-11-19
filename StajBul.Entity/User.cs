@@ -6,7 +6,7 @@ using System.Text;
 
 namespace StajBul.Entity
 {
-    [Table("user")]
+    [Table("user_table")]
     public class User : BaseEntity
     {
         public string UName { get; set; }

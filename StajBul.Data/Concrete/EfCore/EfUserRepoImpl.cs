@@ -23,7 +23,7 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void deleteUserById(int userId)
         {
-            context.Database.ExecuteSqlRaw("UPDATE user SET \"RowStatus\" = '1' WHERE \"Id\" = {0}", userId);
+            context.Database.ExecuteSqlRaw("UPDATE user_table SET \"RowStatus\" = '1' WHERE \"Id\" = {0}", userId);
         }
 
         public IQueryable<User> getAll()
@@ -38,8 +38,7 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void updateUser(User user)
         {
-            context.Entry(user).State = EntityState.Modified;
-            context.SaveChanges();
+            context.Database.ExecuteSqlRaw("UPDATE user_table SET \"UserType\" = {0}, \"UName\" = {1}, \"UserSurname\" = {2}, \"Mail\" = {3}, \"Age\" = {4} WHERE \"Id\" = {5}", user.UserType,user.UName, user.UserSurname,user.Mail, user.Age, user.Id);
         }
     }
 }

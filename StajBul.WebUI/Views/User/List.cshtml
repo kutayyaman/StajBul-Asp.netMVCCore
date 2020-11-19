@@ -38,7 +38,9 @@
                                 <td>@user.Mail</td>
                                 <td>@user.UserType</td>
                                 <td>
+                                    <a class="btn btn-primary btn-sm" asp-controller="User" asp-action="Edit" asp-route-id="@user.Id">Güncelle</a>
                                     <a class="btn btn-danger btn-sm" asp-controller="User" asp-action="Delete" asp-route-id="@user.Id">Sil</a>
+
                                 </td>
                             </tr>
                         }

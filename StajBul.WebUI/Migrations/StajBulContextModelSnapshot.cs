@@ -232,7 +232,7 @@ namespace StajBul.WebUI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("user");
+                    b.ToTable("user_table");
                 });
 
             modelBuilder.Entity("StajBul.Entity.Address", b =>

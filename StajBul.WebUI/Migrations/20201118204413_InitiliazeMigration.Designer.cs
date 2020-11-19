@@ -9,8 +9,8 @@ using StajBul.Data.Concrete.EfCore;
 namespace StajBul.WebUI.Migrations
 {
     [DbContext(typeof(StajBulContext))]
-    [Migration("20201117220733_InitializeMigration")]
-    partial class InitializeMigration
+    [Migration("20201118204413_InitiliazeMigration")]
+    partial class InitiliazeMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -234,7 +234,7 @@ namespace StajBul.WebUI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("user");
+                    b.ToTable("user_table");
                 });
 
             modelBuilder.Entity("StajBul.Entity.Address", b =>
