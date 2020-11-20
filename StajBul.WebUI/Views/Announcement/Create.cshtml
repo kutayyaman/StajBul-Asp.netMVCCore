@@ -11,56 +11,69 @@
         <div class="form-group">
             <label asp-for="Name">İlan Adı</label>
             <input asp-for="Name" class="form-control">
+            <div><span class="text-danger" asp-validation-for="Name"></span></div>
         </div>
         <div class="form-group">
-            <label asp-for="Title" >İlan Başlığı</label>
+            <label asp-for="Title">İlan Başlığı</label>
             <input asp-for="Title" class="form-control">
+            <div><span class="text-danger" asp-validation-for="Title"></span></div>
         </div>
         <div class="form-group">
             <label asp-for="CategoryId">Kategori Seçin</label>
             <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.categories">
-                <option disabled selected value="">Kategori Seçin</option>
             </select>
+            <div><span class="text-danger" asp-validation-for="CategoryId"></span></div>
         </div>
         <div class="form-group">
             <label asp-for="Explanation">İlan İçeriği</label>
             <textarea asp-for="Explanation" class="form-control" rows="6"></textarea>
+            <div><span class="text-danger" asp-validation-for="Explanation"></span></div>
         </div>
         <div class="form-group">
             <label asp-for="AnnouncementType">İlan Veren Kişi Stajyer Mi Yoksa İş Veren Mi?</label>
             <select asp-for="AnnouncementType" class="form-control" asp-items="@new SelectList(Enum.GetNames(typeof(AnnouncementType)))"></select>
+            <div><span class="text-danger" asp-validation-for="AnnouncementType"></span></div>
         </div>
         <div class="form-group">
             <label asp-for="Address.AddressName">Adres Adı</label>
             <input asp-for="Address.AddressName" class="form-control">
+            <div><span class="text-danger" asp-validation-for="Address.AddressName"></span></div>
         </div>
         <div class="form-group">
-            <label asp-for="Address.City.CityName">İl Adı</label>
-            <input asp-for="Address.City.CityName" class="form-control">
+            <label asp-for="Address.CityId">Sehir Seçin</label>
+            <select asp-for="Address.CityId" class="form-control" asp-items="ViewBag.cities">
+            </select>
+            <div><span class="text-danger" asp-validation-for="Address.CityId"></span></div>
         </div>
         <div class="form-group">
             <label asp-for="Address.District">İlçe Adı</label>
             <input asp-for="Address.District" class="form-control">
+            <div><span class="text-danger" asp-validation-for="Address.District"></span></div>
         </div>
         <div class="form-group">
             <label asp-for="Address.AddressLine1">Adres Bilgileri</label>
             <textarea asp-for="Address.AddressLine1" class="form-control" rows="6"></textarea>
+            <div><span class="text-danger" asp-validation-for="Address.AddressLine1"></span></div>
         </div>
         <div class="form-group">
             <label asp-for="Address.AddressLine2">Adres Bilgileri Devamini Buraya Yazabilirsiniz</label>
             <textarea asp-for="Address.AddressLine2" class="form-control" rows="3"></textarea>
+            <div><span class="text-danger" asp-validation-for="Address.AddressLine2"></span></div>
         </div>
         <div class="form-group">
             <label asp-for="Address.PostalCode">Posta Kodu</label>
             <input asp-for="Address.PostalCode" class="form-control">
+            <div><span class="text-danger" asp-validation-for="Address.PostalCode"></span></div>
         </div>
         <div class="form-group">
-            <label asp-for="Address.Phone" >Telefon Numarası</label>
+            <label asp-for="Address.Phone">Telefon Numarası</label>
             <input asp-for="Address.Phone" class="form-control">
+            <div><span class="text-danger" asp-validation-for="Address.Phone"></span></div>
         </div>
         <div class="form-group">
-            <label asp-for="Mail" >Mail</label>
+            <label asp-for="Mail">Mail</label>
             <input asp-for="Mail" class="form-control">
+            <div><span class="text-danger" asp-validation-for="Mail"></span></div>
         </div>
         <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">İlan Ver</button>
     </form>

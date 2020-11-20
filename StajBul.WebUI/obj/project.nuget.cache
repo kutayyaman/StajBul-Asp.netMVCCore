@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "nvPnki6fIyXIlM1vKwflTsOdIi3J47DnATpzAvEB0Q46gYBM/5GAD4WDxMmQOBy07OV0C0zEgsrA+mTH6wT7Ow==",
+  "dgSpecHash": "LNLu60OOh5oVEuokznZX8dWBiT0mr/mvhwZY8UKIcNSWDRcm1hRTEIUn5+tRjQhSH1LRBLGRm32A97/kp/LGNw==",
   "success": true,
   "projectFilePath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.WebUI\\StajBul.WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kutay\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\jquery\\3.5.1\\jquery.3.5.1.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",

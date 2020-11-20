@@ -28,7 +28,7 @@ namespace StajBul.WebUI.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            return View(new User() {});
         }
 
         [HttpPost]
@@ -38,9 +38,9 @@ namespace StajBul.WebUI.Controllers
             user.CreatedDate = dateTime.ToString();
 
             if (ModelState.IsValid)
-            {
+            {   
                 userService.addUser(user);
-                return RedirectToAction("List");
+                return View("Completed", user);
             }
 
             return View(user);

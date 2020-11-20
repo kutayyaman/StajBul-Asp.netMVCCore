@@ -15,11 +15,13 @@ namespace StajBul.WebUI.Controllers
         private IAnnouncementService announcementService;
         private ICategoryService categoryService;
         private IAddressService addressService;
-        public AnnouncementController(IAnnouncementService announcementService, ICategoryService categoryService, IAddressService addressService)
+        private ICityService cityService;
+        public AnnouncementController(IAnnouncementService announcementService, ICategoryService categoryService, IAddressService addressService,ICityService cityService)
         {
             this.announcementService = announcementService;
             this.categoryService = categoryService;
             this.addressService = addressService;
+            this.cityService = cityService;
         }
         public IActionResult Index()
         {
@@ -36,6 +38,7 @@ namespace StajBul.WebUI.Controllers
         public IActionResult Create()
         {
             ViewBag.categories = new SelectList(categoryService.getAll(), "Id", "CategoryName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
+            ViewBag.cities = new SelectList(cityService.getAll(), "Id", "CityName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
             return View();
         }
 
