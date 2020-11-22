@@ -241,9 +241,17 @@
               "target": "Package",
               "version": "[3.1.4, )"
             },
+            "Microsoft.jQuery.Unobtrusive.Validation": {
+              "target": "Package",
+              "version": "[3.2.11, )"
+            },
             "jQuery": {
               "target": "Package",
               "version": "[3.5.1, )"
+            },
+            "jQuery.Validation": {
+              "target": "Package",
+              "version": "[1.19.2, )"
             }
           },
           "imports": [

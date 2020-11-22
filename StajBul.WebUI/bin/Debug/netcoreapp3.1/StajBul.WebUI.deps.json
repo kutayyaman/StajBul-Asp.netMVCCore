@@ -26,10 +26,12 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Tools": "5.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
+          "Microsoft.jQuery.Unobtrusive.Validation": "3.2.11",
           "StajBul.Data": "1.0.0",
           "StajBul.Entity": "1.0.0",
           "StajBul.Service": "1.0.0",
           "jQuery": "3.5.1",
+          "jQuery.Validation": "1.19.2",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -340,6 +342,11 @@
         }
       },
       "jQuery/3.5.1": {},
+      "jQuery.Validation/1.19.2": {
+        "dependencies": {
+          "jQuery": "3.5.1"
+        }
+      },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "dependencies": {
           "System.Text.Encodings.Web": "4.5.0"
@@ -815,6 +822,12 @@
         },
         "compile": {
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
+        }
+      },
+      "Microsoft.jQuery.Unobtrusive.Validation/3.2.11": {
+        "dependencies": {
+          "jQuery": "3.5.1",
+          "jQuery.Validation": "1.19.2"
         }
       },
       "Microsoft.NETCore.Platforms/3.1.0": {},
@@ -3638,6 +3651,13 @@
       "path": "jquery/3.5.1",
       "hashPath": "jquery.3.5.1.nupkg.sha512"
     },
+    "jQuery.Validation/1.19.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2/Cz+HM456ioL8UTu57ETIs4bmHZN4WBwl7ygQfFokbF/tm4cCMLQEg3KJ28riyOvrJqvnL5dpaCxmFIeee3CA==",
+      "path": "jquery.validation/1.19.2",
+      "hashPath": "jquery.validation.1.19.2.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -3833,6 +3853,13 @@
       "sha512": "sha512-cI/VWn9G1fghXrNDagX9nYaaB/nokkZn0HYAawGaELQrl8InSezfe9OnfPZLcJq3esXxygh3hkq2c3qoV3SDyQ==",
       "path": "microsoft.extensions.primitives/5.0.0",
       "hashPath": "microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.jQuery.Unobtrusive.Validation/3.2.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8qGe1q3vV5Fwbpb0OSI8SxSiIBeFt9sgAvFvPwgZuuL+PZ+z0VsPB5yeqT+SrvPKpyVpN33MLhgvSW5Zf07IsQ==",
+      "path": "microsoft.jquery.unobtrusive.validation/3.2.11",
+      "hashPath": "microsoft.jquery.unobtrusive.validation.3.2.11.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "type": "package",

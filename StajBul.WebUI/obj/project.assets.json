@@ -36,6 +36,12 @@
       "jQuery/3.5.1": {
         "type": "package"
       },
+      "jQuery.Validation/1.19.2": {
+        "type": "package",
+        "dependencies": {
+          "jQuery": "1.4.4"
+        }
+      },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -542,6 +548,13 @@
         },
         "runtime": {
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
+        }
+      },
+      "Microsoft.jQuery.Unobtrusive.Validation/3.2.11": {
+        "type": "package",
+        "dependencies": {
+          "jQuery": "1.8.0",
+          "jQuery.Validation": "1.8.0.1"
         }
       },
       "Microsoft.NETCore.Platforms/3.1.0": {
@@ -2431,6 +2444,20 @@
         "jquery.nuspec"
       ]
     },
+    "jQuery.Validation/1.19.2": {
+      "sha512": "2/Cz+HM456ioL8UTu57ETIs4bmHZN4WBwl7ygQfFokbF/tm4cCMLQEg3KJ28riyOvrJqvnL5dpaCxmFIeee3CA==",
+      "type": "package",
+      "path": "jquery.validation/1.19.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery.validate-vsdoc.js",
+        "Content/Scripts/jquery.validate.js",
+        "Content/Scripts/jquery.validate.min.js",
+        "jquery.validation.1.19.2.nupkg.sha512",
+        "jquery.validation.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "sha512": "Y4rs5aMEXY8G7wJo5S3EEt6ltqyOTr/qOeZzfn+hw/fuQj5GppGckMY5psGLETo1U9hcT5MmAhaT5xtusM1b5g==",
       "type": "package",
@@ -3058,6 +3085,19 @@
         "microsoft.extensions.primitives.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Microsoft.jQuery.Unobtrusive.Validation/3.2.11": {
+      "sha512": "8qGe1q3vV5Fwbpb0OSI8SxSiIBeFt9sgAvFvPwgZuuL+PZ+z0VsPB5yeqT+SrvPKpyVpN33MLhgvSW5Zf07IsQ==",
+      "type": "package",
+      "path": "microsoft.jquery.unobtrusive.validation/3.2.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery.validate.unobtrusive.js",
+        "Content/Scripts/jquery.validate.unobtrusive.min.js",
+        "microsoft.jquery.unobtrusive.validation.3.2.11.nupkg.sha512",
+        "microsoft.jquery.unobtrusive.validation.nuspec"
       ]
     },
     "Microsoft.NETCore.Platforms/3.1.0": {
@@ -7696,10 +7736,12 @@
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
+      "Microsoft.jQuery.Unobtrusive.Validation >= 3.2.11",
       "StajBul.Data >= 1.0.0",
       "StajBul.Entity >= 1.0.0",
       "StajBul.Service >= 1.0.0",
-      "jQuery >= 3.5.1"
+      "jQuery >= 3.5.1",
+      "jQuery.Validation >= 1.19.2"
     ]
   },
   "packageFolders": {
@@ -7759,9 +7801,17 @@
             "target": "Package",
             "version": "[3.1.4, )"
           },
+          "Microsoft.jQuery.Unobtrusive.Validation": {
+            "target": "Package",
+            "version": "[3.2.11, )"
+          },
           "jQuery": {
             "target": "Package",
             "version": "[3.5.1, )"
+          },
+          "jQuery.Validation": {
+            "target": "Package",
+            "version": "[1.19.2, )"
           }
         },
         "imports": [

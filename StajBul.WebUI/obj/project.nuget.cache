@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "LNLu60OOh5oVEuokznZX8dWBiT0mr/mvhwZY8UKIcNSWDRcm1hRTEIUn5+tRjQhSH1LRBLGRm32A97/kp/LGNw==",
+  "dgSpecHash": "dX8NOzARsGr3prt58tWg3RRe3Sp7Iqqi1LhQ+zXVV23+ErlX9am+GRHuVYug5mPYP4CHYGfNxk2BM97Nr0bLXQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\kutay\\source\\repos\\StajBul\\StajBul.WebUI\\StajBul.WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kutay\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\jquery\\3.5.1\\jquery.3.5.1.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\jquery.validation\\1.19.2\\jquery.validation.1.19.2.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
@@ -35,6 +36,7 @@
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\kutay\\.nuget\\packages\\microsoft.jquery.unobtrusive.validation\\3.2.11\\microsoft.jquery.unobtrusive.validation.3.2.11.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\kutay\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\3.1.4\\microsoft.visualstudio.web.codegeneration.3.1.4.nupkg.sha512",
