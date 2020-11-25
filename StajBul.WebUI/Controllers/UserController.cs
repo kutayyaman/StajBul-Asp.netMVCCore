@@ -28,17 +28,17 @@ namespace StajBul.WebUI.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new User() {});
+            return View(new User() { });
         }
 
         [HttpPost]
         public IActionResult Create(User user)
         {
             DateTime dateTime = DateTime.Now;
-            user.CreatedDate = dateTime.ToString();
+            //user.CreatedDate = dateTime.ToString();
 
             if (ModelState.IsValid)
-            {   
+            {
                 userService.addUser(user);
                 return View("Completed", user);
             }
@@ -57,9 +57,9 @@ namespace StajBul.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                user.ModifiedDate = DateTime.Now.ToString();
+                //user.ModifiedDate = DateTime.Now.ToString();
                 userService.updateUser(user);
-                TempData["message"] = $"{user.Mail} Mail Adresli Kullanıcı Güncellendi.";
+                TempData["message"] = $"{user.Email} Mail Adresli Kullanıcı Güncellendi.";
                 return RedirectToAction("List");
             }
 

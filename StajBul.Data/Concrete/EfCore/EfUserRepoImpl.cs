@@ -23,7 +23,10 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void deleteUserById(int userId)
         {
-            context.Database.ExecuteSqlRaw("UPDATE user_table SET \"RowStatus\" = '1' WHERE \"Id\" = {0}", userId);
+            //context.Database.ExecuteSqlRaw("UPDATE AspNetUsers SET \"RowStatus\" = '1' WHERE \"Id\" = {0}", userId);
+            User user = getById(userId);
+            user.RowStatus = RowStatus.DELETED;
+            context.SaveChanges();
         }
 
         public IQueryable<User> getAll()
@@ -38,7 +41,13 @@ namespace StajBul.Data.Concrete.EfCore
 
         public void updateUser(User user)
         {
-            context.Database.ExecuteSqlRaw("UPDATE user_table SET \"UserType\" = {0}, \"UName\" = {1}, \"UserSurname\" = {2}, \"Mail\" = {3}, \"Age\" = {4} WHERE \"Id\" = {5}", user.UserType,user.UName, user.UserSurname,user.Mail, user.Age, user.Id);
+            //context.Database.ExecuteSqlRaw("UPDATE AspNetUsers SET \"UName\" = {1}, \"UserSurname\" = {2}, \"Mail\" = {3}, \"Age\" = {4} WHERE \"Id\" = {5}", user.UserName, user.UserSurname, user.Email, user.Age, user.Id);
+            User userFromDatabase = getById(user.Id);
+            userFromDatabase.UserName = user.UserName;
+            userFromDatabase.UserSurname = user.UserSurname;
+            userFromDatabase.Email = user.Email;
+            userFromDatabase.Age = user.Age;
+            context.SaveChanges();
         }
     }
 }

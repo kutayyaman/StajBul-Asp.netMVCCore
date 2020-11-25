@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StajBul.Data.Abstract;
 using StajBul.Data.Concrete.EfCore;
+using StajBul.Entity;
 using StajBul.Service;
 using StajBul.Service.Impl;
 
@@ -42,7 +44,10 @@ namespace StajBul.WebUI
 
             services.AddDbContext<StajBulContext>(options =>
             options.UseNpgsql(Configuration.GetConnectionString("StajBulConnection"), b=>b.MigrationsAssembly("StajBul.WebUI")));
-            
+            services.AddIdentity<User, IdentityRole<int>>()
+                .AddEntityFrameworkStores<StajBulContext>()
+                .AddDefaultTokenProviders();
+
             services.AddControllersWithViews();
         }
 
@@ -62,6 +67,7 @@ namespace StajBul.WebUI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseStatusCodePages();
+            app.UseAuthentication();
 
             app.UseRouting();
 

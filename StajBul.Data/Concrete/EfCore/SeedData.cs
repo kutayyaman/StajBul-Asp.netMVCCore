@@ -19,10 +19,10 @@ namespace StajBul.Data.Concrete.EfCore
             if (!context.Users.Any())
             {
                 context.Users.AddRange(
-                        new User() { Age = 22, Mail = "yamankutay1@gmail.com", UName = "kutayyaman", UserSurname = "yaman", UserType = UserType.USER, Pswd = "1111" },
-                        new User() { Age = 23, Mail = "badoonline@gmail.com", UName = "badoonline", UserSurname = "gungor", UserType = UserType.USER, Pswd = "8888" },
-                        new User() { Age = 22, Mail = "siresat@gmail.com", UName = "siresat", UserSurname = "genc", UserType = UserType.USER,Pswd = "1234" },
-                        new User() { Age = 22, Mail = "batugokalp@gmail.com", UName = "batugokalp", UserSurname = "gokalp", UserType = UserType.USER, Pswd = "9999" }
+                        new User() { Age = 22, Email = "yamankutay1@gmail.com", UserName = "kutayyaman", UserSurname = "yaman" },
+                        new User() { Age = 23, Email = "badoonline@gmail.com", UserName = "badoonline", UserSurname = "gungor" },
+                        new User() { Age = 22, Email = "siresat@gmail.com", UserName = "siresat", UserSurname = "genc" },
+                        new User() { Age = 22, Email = "batugokalp@gmail.com", UserName = "batugokalp", UserSurname = "gokalp" }
                     );
                 context.SaveChanges();
             }
@@ -64,7 +64,7 @@ namespace StajBul.Data.Concrete.EfCore
             {
                 context.Announcements.AddRange(
                         new InternshipAnnouncement() { AddressId = 1, CategoryId = 1, UserId = 1, AnnouncementType = AnnouncementType.COMPANY, Explanation = "Ofisimizde full time calisacak java developer stajyrine ihtiyacimiz var cvnizi yamankutay1@gmail.com mailine gonderebilirsiniz.", Mail = "yamankutay1@gmail.com", Name = "Java Developer Stajyeri", Title = "Yazilim Stajyeri BASLIGI" },
-                        new InternshipAnnouncement() { AddressId = 2, CategoryId = 2, UserId = 2, AnnouncementType = AnnouncementType.COMPANY, Explanation = "Bilgsayar muhendisligi donanim stajyeri ariyoruz cvnizi ..... 'ya gonderebilirsiniz", Title = "Donanim Stajyeri BASLIGI" },
+                        new InternshipAnnouncement() { AddressId = 2, CategoryId = 2, UserId = 2, AnnouncementType = AnnouncementType.COMPANY, Explanation = "Bilgsayar muhendisligi donanim stajyeri ariyoruz cvnizi ..... 'ya gonderebilirsiniz",Mail ="deneme@gmal.com",Name = "Ariyoruz Biseyler", Title = "Donanim Stajyeri BASLIGI" },
                         new InternshipAnnouncement() { AddressId = 3, CategoryId = 3, UserId = 3, AnnouncementType = AnnouncementType.STAJYER, Explanation = "Staj Yapmak Icin Bir Yazilim Ofisi Ariyorum.", Mail = "yamankutay1@gmail.com", Name = "Staj Yeri Ariyorum", Title = "Yer Ariyorum Basligi" }
 
                     );

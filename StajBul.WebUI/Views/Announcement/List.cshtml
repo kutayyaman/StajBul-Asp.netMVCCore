@@ -39,7 +39,7 @@
                                     <td>@announcement.Category.CategoryName</td>
                                     <td>@announcement.AnnouncementType</td>
                                     <td>@announcement.Mail</td>
-                                    <td>@announcement.User.UName</td>
+                                    <td>@announcement.User?.UserName</td>
                                     <td>
                                         <a class="btn btn-primary btn-sm" asp-controller="Announcement" asp-action="Edit" asp-route-id="@announcement.Id">Güncelle</a>
                                         <a class="btn btn-danger btn-sm" asp-controller="Announcement" asp-action="Delete" asp-route-id="@announcement.Id">Sil</a>

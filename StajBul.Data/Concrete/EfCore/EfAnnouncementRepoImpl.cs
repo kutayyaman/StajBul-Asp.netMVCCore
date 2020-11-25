@@ -28,7 +28,8 @@ namespace StajBul.Data.Concrete.EfCore
 
         public IQueryable<InternshipAnnouncement> getAll()
         {
-            return context.Announcements.Include(a => a.Category).Include(a => a.User).Where(a => a.RowStatus == RowStatus.ACTIVE).OrderByDescending(a => a.Id);
+            IQueryable <InternshipAnnouncement> announcements = context.Announcements.Include(a => a.Category).Include(a => a.User).Where(a => a.RowStatus == RowStatus.ACTIVE).OrderByDescending(a => a.Id);
+            return announcements;
         }
 
         public IQueryable<InternshipAnnouncement> getAllStajyerAnnouncement()

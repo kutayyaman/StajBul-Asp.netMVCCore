@@ -17,11 +17,11 @@
                             <th>Id</th>
                             <th>UName</th>
                             <th>UserSurname</th>
-                            <th>Pswd</th>
+                            @*<th>Pswd</th>*@
                             <th>Age</th>
-                            <th>RegistrationDate</th>
+                            @*<th>RegistrationDate</th>*@
                             <th>Mail</th>
-                            <th>UserType</th>
+                            @*<th>UserType</th>*@
                             <th></th>
                         </tr>
                     </thead>
@@ -30,13 +30,13 @@
                         {
                             <tr>
                                 <td>@user.Id</td>
-                                <td>@user.UName</td>
+                                <td>@user.UserName</td>
                                 <td>@user.UserSurname</td>
-                                <td>@user.Pswd</td>
+                                @*<td>@user.Pswd</td>*@
                                 <td>@user.Age</td>
-                                <td>@user.CreatedDate</td>
-                                <td>@user.Mail</td>
-                                <td>@user.UserType</td>
+                                @*<td>@user.CreatedDate</td>*@
+                                <td>@user.Email</td>
+                                @*<td>@user.UserType</td>*@
                                 <td>
                                     <a class="btn btn-primary btn-sm" asp-controller="User" asp-action="Edit" asp-route-id="@user.Id">Güncelle</a>
                                     <a class="btn btn-danger btn-sm" asp-controller="User" asp-action="Delete" asp-route-id="@user.Id">Sil</a>

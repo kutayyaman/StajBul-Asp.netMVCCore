@@ -163,3 +163,8 @@ C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\User\Completed.cshtml.g.cs
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\StajBul.WebUI.csproj.CoreCompileInputs.cache
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\StajBul.WebUI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
