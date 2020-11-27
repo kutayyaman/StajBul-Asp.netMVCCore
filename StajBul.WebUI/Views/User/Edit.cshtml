@@ -9,11 +9,17 @@
 
     <form asp-controller="User" asp-action="EditPost" method="post">
 
+        <div class="text-danger" asp-validation-summary="All"></div>
+
         <input type="hidden" asp-for="Id" />
 
         <div class="form-group">
             <label asp-for="UserName">Kullanıcı Adı</label>
             <input asp-for="UserName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="Password">Şifre</label>
+            <input name="Password" class="form-control">
         </div>
         <div class="form-group">
             <label asp-for="UserSurname">Soyadı</label>

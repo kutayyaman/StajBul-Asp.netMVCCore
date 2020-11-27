@@ -36,6 +36,7 @@ namespace StajBul.Data.Concrete.EfCore
         public IQueryable<Address> getAll()
         {
             return context.Addresses.Where(a => a.RowStatus == RowStatus.ACTIVE);
+            
         }
 
         public Address getById(int addressId)

@@ -1,0 +1,15 @@
+﻿@model IdentityRole<int>
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="text-info">ID </div> @Model.Id
+<div class="text-info">Role Adı </div> @Model.Name
+<h4>
+    Silmek İstiyor Musunuz?
+</h4>
+<form asp-controller="Role" asp-action="DeleteConfirm" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger btn-lg btn-block">Sil</button>
+</form>
+

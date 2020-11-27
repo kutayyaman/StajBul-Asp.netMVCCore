@@ -1,5 +1,12 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("Admin"))
+        {
+            Layout = "~/Views/Shared/_AdminLayout.cshtml";
+        }
+    }
 }
 @*TO DO LIST TODOO*@
 @*UYE GIRISI OlDUGU ZAMAN BURAYA BIR TANE IF KOSULU KOYARAK Layout'un admin layout mu yoksa normal layout mu olacagina karar verilebilir.*@

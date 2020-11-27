@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StajBul.Entity;
 using StajBul.Service;
@@ -16,24 +17,21 @@ namespace StajBul.WebUI.Controllers
             this.categoryService = categoryService;
         }
 
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+        [Authorize(Roles ="Admin")]
         public IActionResult List()
         {
             return View(categoryService.getAll());
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(Category category)
         {
             DateTime dateTime = DateTime.Now;
@@ -49,12 +47,14 @@ namespace StajBul.WebUI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             return View(categoryService.getById(id));
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult EditPost(Category category)
         {
             if (ModelState.IsValid)
@@ -69,12 +69,14 @@ namespace StajBul.WebUI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             return View(categoryService.getById(id));
         }
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteConfirm(int id)
         {
             categoryService.deleteCategoryById(id);

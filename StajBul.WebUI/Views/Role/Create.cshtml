@@ -1,0 +1,20 @@
+﻿@model IdentityRole<int>
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <h1>Role Oluştur</h1>
+    <hr />
+
+    <form asp-controller="Role" asp-action="Create" method="post">
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <div class="form-group">
+            <label asp-for="Name">Role Adı</label>
+            <input asp-for="Name" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">Role Oluştur</button>
+    </form>
+
+</div>
+

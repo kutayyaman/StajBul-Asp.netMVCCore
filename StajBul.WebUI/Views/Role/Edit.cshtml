@@ -1,0 +1,63 @@
+﻿@model RoleDetails
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <h1>Role Güncelle</h1>
+    <hr />
+
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <form asp-controller="Role" asp-action="EditPost" method="post">
+
+        <input type="hidden" name="RoleId" value="@Model.Role.Id" />
+        <input type="hidden" name="RoleName" value="@Model.Role.Name" />
+
+        <h6 class="bg-info p-1 text-white">
+            @Model.Role.Name Yetkisini Usera Vermek
+        </h6>
+        <table class="table table-bordered table-sm">
+            @if(Model.NonMembers.Count() == 0)
+            {
+                <tr>
+                    <td colspan="2">Bütün User'lar @Model.Role.Name Yetkisine Sahip</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var user in Model.NonMembers)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td><input type="checkbox" name="IdsToAdd" value="@user.Id"/></td>
+                    </tr>
+                }
+            }
+        </table>
+
+        <h6 class="bg-info p-1 text-white">
+            Userdan @Model.Role.Name Yetkisini Almak
+        </h6>
+        <table class="table table-bordered table-sm">
+            @if (Model.Members.Count() == 0)
+            {
+                <tr>
+                    <td colspan="2">@Model.Role.Name Yetkisine Sahip User Yok</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var user in Model.Members)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td><input type="checkbox" name="IdsToDelete" value="@user.Id" /></td>
+                    </tr>
+                }
+            }
+        </table>
+        <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">Güncelle</button>
+    </form>
+
+</div>
+

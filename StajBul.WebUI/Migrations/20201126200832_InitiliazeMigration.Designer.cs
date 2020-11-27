@@ -10,8 +10,8 @@ using StajBul.Data.Concrete.EfCore;
 namespace StajBul.WebUI.Migrations
 {
     [DbContext(typeof(StajBulContext))]
-    [Migration("20201125213102_UserUpdatedForAuthentication")]
-    partial class UserUpdatedForAuthentication
+    [Migration("20201126200832_InitiliazeMigration")]
+    partial class InitiliazeMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -390,8 +390,10 @@ namespace StajBul.WebUI.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
 
+                    b.Property<string>("UserRealName")
+                        .HasColumnType("text");
+
                     b.Property<string>("UserSurname")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");

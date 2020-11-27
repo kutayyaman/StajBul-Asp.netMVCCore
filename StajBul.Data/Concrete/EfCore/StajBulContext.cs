@@ -16,6 +16,7 @@ namespace StajBul.Data.Concrete.EfCore
         public DbSet<Address> Addresses { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<IdentityRole<int>> Roles { get; set; }
 
 
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,6 +16,7 @@ using StajBul.Data.Concrete.EfCore;
 using StajBul.Entity;
 using StajBul.Service;
 using StajBul.Service.Impl;
+using StajBul.WebUI.Infrastructure;
 
 namespace StajBul.WebUI
 {
@@ -44,7 +46,24 @@ namespace StajBul.WebUI
 
             services.AddDbContext<StajBulContext>(options =>
             options.UseNpgsql(Configuration.GetConnectionString("StajBulConnection"), b=>b.MigrationsAssembly("StajBul.WebUI")));
-            services.AddIdentity<User, IdentityRole<int>>()
+
+            services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme,
+                                                                opt =>
+                                                                {
+                                                                    //configure your other properties
+                                                                    opt.LoginPath = "/User/Login";
+                                                                });
+
+            services.AddTransient<IPasswordValidator<User>, CustomPasswordValidator>();
+            services.AddTransient<IUserValidator<User>, CustomUserValidator>();
+            services.AddIdentity<User, IdentityRole<int>>(options => 
+            {
+                options.Password.RequiredLength = 7;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+            })
                 .AddEntityFrameworkStores<StajBulContext>()
                 .AddDefaultTokenProviders();
 

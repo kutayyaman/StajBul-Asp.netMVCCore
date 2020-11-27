@@ -388,8 +388,10 @@ namespace StajBul.WebUI.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
 
+                    b.Property<string>("UserRealName")
+                        .HasColumnType("text");
+
                     b.Property<string>("UserSurname")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");

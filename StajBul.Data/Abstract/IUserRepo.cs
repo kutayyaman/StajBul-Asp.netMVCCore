@@ -1,4 +1,5 @@
-﻿using StajBul.Entity;
+﻿using Microsoft.AspNetCore.Identity;
+using StajBul.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

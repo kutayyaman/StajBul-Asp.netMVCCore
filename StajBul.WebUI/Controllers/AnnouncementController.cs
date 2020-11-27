@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using StajBul.Data.Abstract;
@@ -16,18 +18,17 @@ namespace StajBul.WebUI.Controllers
         private ICategoryService categoryService;
         private IAddressService addressService;
         private ICityService cityService;
-        public AnnouncementController(IAnnouncementService announcementService, ICategoryService categoryService, IAddressService addressService,ICityService cityService)
+        private UserManager<User> userManager;
+        public AnnouncementController(IAnnouncementService announcementService, ICategoryService categoryService, IAddressService addressService,ICityService cityService, UserManager<User> userManager)
         {
             this.announcementService = announcementService;
             this.categoryService = categoryService;
             this.addressService = addressService;
             this.cityService = cityService;
-        }
-        public IActionResult Index()
-        {
-            return View();
+            this.userManager = userManager;
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult List()
         {
             IQueryable<InternshipAnnouncement> announcements = announcementService.getAll();
@@ -35,6 +36,7 @@ namespace StajBul.WebUI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             ViewBag.categories = new SelectList(categoryService.getAll(), "Id", "CategoryName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
@@ -43,25 +45,21 @@ namespace StajBul.WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(InternshipAnnouncement announcement)
+        [Authorize]
+        public async Task<IActionResult> Create(InternshipAnnouncement announcement)
         {
-            //TO DO
-            //BURADAKI USERID ARTIK SISTEMDEKI USER KIMSE ONUN IDSI OLCAK
-            //CITY BILGISI ICIN TABLOYA BUTUN SEHIRLER EKLENECEK VE O SEHIRLER BIR LISTBOX OLARAK GELCEK KULLANICI ORADAN SECECEK
-            Random random = new Random();
-            announcement.UserId = random.Next(1, 4);
-            //yukardaki iki satirda kalkacak unutma
+            var user = await userManager.FindByNameAsync(User?.Identity?.Name);
+            announcement.UserId = user.Id;
             DateTime dateTime = DateTime.Now;
             string createdDate = dateTime.ToString();
             announcement.CreatedDate = createdDate;
-            announcement.Address.CityId = 1;
             announcement.Address.UserId = announcement.UserId;
-            addressService.addAddress(announcement.Address);
             announcement.AddressId = addressService.getNextId();
+            addressService.addAddress(announcement.Address);
             if (ModelState.IsValid)//Validasyonlar tamamsa demek oluyor yani validasyonlari ekledigim zaman anlamli olacak.
             {
                 announcementService.addInternshipAnnouncement(announcement);
-                return RedirectToAction("List");
+                return RedirectToAction("Details","Home", new { id = announcement.Id });
             }
 
             ViewBag.categories = new SelectList(categoryService.getAll(), "Id", "CategoryName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
@@ -69,36 +67,70 @@ namespace StajBul.WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        [Authorize]
+        public async Task<IActionResult> Edit(int id)
         {
-            ViewBag.categories = new SelectList(categoryService.getAll(), "Id", "CategoryName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
-            return View(announcementService.getById(id));
+            User user = await userManager.FindByNameAsync(User?.Identity?.Name);
+            InternshipAnnouncement announcement = announcementService.getById(id);
+            
+            if (announcement.UserId != user.Id && !User.IsInRole("Admin"))
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.categories = new SelectList(categoryService.getAll(), "Id", "CategoryName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
+                return View(announcementService.getById(id));
+            }
         }
 
         [HttpPost]
-        public IActionResult EditPost(InternshipAnnouncement announcement)
+        [Authorize]
+        public async Task<IActionResult> EditPost(InternshipAnnouncement announcement)
         {
-            if (ModelState.IsValid)
+            User user = await userManager.FindByNameAsync(User?.Identity?.Name);
+            if (announcement.UserId != user.Id && !User.IsInRole("Admin"))
             {
-                announcement.ModifiedDate = DateTime.Now.ToString();
-                announcementService.updateInternshipAnnouncement(announcement);
-                TempData["message"] = $"{announcement.Title} Güncellendi.";
-                return RedirectToAction("List");
+                return NotFound();
             }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    announcement.ModifiedDate = DateTime.Now.ToString();
+                    announcementService.updateInternshipAnnouncement(announcement);
+                    TempData["message"] = $"{announcement.Title} Güncellendi.";
+                    return RedirectToAction("List");
+                }
 
-            ViewBag.categories = new SelectList(categoryService.getAll(), "Id", "CategoryName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
-            return View(announcement);
+                ViewBag.categories = new SelectList(categoryService.getAll(), "Id", "CategoryName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
+                return View(announcement);
+            }    
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        [Authorize]
+        public async Task<IActionResult> Delete(int id)
         {
+            User user = await userManager.FindByNameAsync(User?.Identity?.Name);
+            InternshipAnnouncement announcement = announcementService.getById(id);
+            if (announcement.UserId != user.Id && !User.IsInRole("Admin"))
+            {
+                return NotFound();
+            }
             return View(announcementService.getById(id));
         }
 
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirm(int id)
+        [Authorize]
+        public async Task<IActionResult> DeleteConfirm(int id)
         {
+            User user = await userManager.FindByNameAsync(User?.Identity?.Name);
+            InternshipAnnouncement announcement = announcementService.getById(id);
+            if (announcement.UserId != user.Id && !User.IsInRole("Admin"))
+            {
+                return NotFound();
+            }
             announcementService.deleteInternshipAnnouncementById(id);
             TempData["message"] = id+ "id'li Kayıt Silindi.";
             return RedirectToAction("List");

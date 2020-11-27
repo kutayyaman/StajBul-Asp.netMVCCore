@@ -1,0 +1,45 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="text-danger" asp-validation-summary="All"></div>
+
+
+
+
+
+        <div class="card text-center">
+            <div class="card-body">
+                <form asp-controller="User" asp-action="Login" method="post">
+
+                    <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+
+                    <div class="container">
+                        <img src="~/images/loginPage.png" alt="Avatar" class="rounded mx-auto d-block" width="200" height="200">
+
+                        <div class="form-group mx-sm-5">
+                            <label asp-for="UserName"><b>Kullanıcı Adı</b></label>
+                            <input asp-for="UserName" class="form-control" placeholder="Kullanıcı Adınızı Girin" required />
+                        </div>
+
+                        <div class="form-group mx-sm-5">
+                            <label asp-for="Password"><b>Şifre</b></label>
+                            <input asp-for="Password" class="form-control" placeholder="Şifrenizi Girin" required />
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-primary btn-lg " type="submit">Giriş Yap</button>
+                        </div>
+                        @*<label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>*@
+                    </div>
+
+                    <div class="container text-lg-center mt-2" @*style="background-color:#f1f1f1"*@>
+                        <a href="#">Parolamı Unuttum</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
