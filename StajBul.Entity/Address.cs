@@ -9,8 +9,6 @@ namespace StajBul.Entity
     [Table("address")]
     public class Address : BaseEntity
     {
-        public int UserId { get; set; }
-        public User User { get; set; }
 
         [Required(ErrorMessage = "Adres Adı Girmelisiniz")]
         public string AddressName { get; set; }

@@ -62,7 +62,8 @@ namespace StajBul.WebUI.Controllers
 
                 if (result.Succeeded)
                 {
-                    return View("Completed", user);
+                    TempData["message"] = $"{user.UserName} Kullanıcı Adıyla Üyelik Oluşturuldu.";
+                    return View("Login");
                 }
 
                 else
@@ -219,20 +220,28 @@ namespace StajBul.WebUI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Profile(string username)
+        public async Task<IActionResult> Profile(string username ,string? id)
         {
             UserProfileViewModel model = new UserProfileViewModel();
 
             if (string.IsNullOrEmpty(username))
             {
-                if (!User.Identity.IsAuthenticated)
+                if (!string.IsNullOrEmpty(id)) //username ile degilde id ile profile ulasmak istemis
                 {
-                    return RedirectToAction("Login");
-                }
-                else //profile sayfasina gitmek istiyor ancak kiminkine gitmek istedigni yazmamis ve siteye giris yapmis birisi varsa
-                {
-                    model.User = await userManager.FindByNameAsync(User.Identity.Name);
+                    model.User = userService.getById(int.Parse(id));
                     model.Announcements = announcementService.getByUserId(model.User.Id).ToList();
+                }
+                else //adam username veya id yollamamis
+                {     
+                    if (!User.Identity.IsAuthenticated)
+                    {
+                        return RedirectToAction("Login");
+                    }
+                    else //profile sayfasina gitmek istiyor ancak kiminkine gitmek istedigni yazmamis ve siteye giris yapmis birisi varsa
+                    {
+                        model.User = userService.getByUserName(User.Identity.Name);
+                        model.Announcements = announcementService.getByUserId(model.User.Id).ToList();
+                    }
                 }
             }
             else
@@ -249,6 +258,61 @@ namespace StajBul.WebUI.Controllers
                 }
             }
             return View(model);
+        }
+
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> AddAboutMe(int id)
+        {
+            User user = await userManager.FindByNameAsync(User.Identity.Name);
+            if(user.Id != id && !User.IsInRole("Admin"))
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddAboutMePost(User user)
+        {
+            if(user.Id != userManager.FindByNameAsync(User.Identity.Name).Id && !User.IsInRole("Admin"))
+            {
+                return NotFound();
+            }
+            string aboutMe = user.AboutMe;
+            user = await userManager.FindByIdAsync(user.Id.ToString());
+            user.AboutMe = aboutMe;
+            await userManager.UpdateAsync(user);
+            return RedirectToAction("Profile","User");
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> EditAboutMe(int id)
+        {
+            User user = await userManager.FindByNameAsync(User.Identity.Name);
+            if (user.Id != id && !User.IsInRole("Admin"))
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditAboutMePost(User user)
+        {
+
+            User userInSystem = await userManager.FindByNameAsync(User.Identity.Name);
+            if (user.Id != userInSystem.Id && !User.IsInRole("Admin"))
+            {
+                return NotFound();
+            }
+            userInSystem.AboutMe = user.AboutMe;
+            await userManager.UpdateAsync(userInSystem);
+            return RedirectToAction("Profile","User");
         }
     }
 }

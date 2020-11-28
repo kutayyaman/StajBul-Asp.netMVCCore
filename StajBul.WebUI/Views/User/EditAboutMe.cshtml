@@ -1,0 +1,20 @@
+﻿@model User
+@{
+    ViewData["Title"] = "EditAboutMe";
+}
+
+<div class="container">
+    <h1>Hakkımda Bilgisini Güncelle</h1>
+    <hr />
+
+    <form asp-controller="User" asp-action="EditAboutMePost" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="AboutMe">Hakkımda</label>
+            <textarea rows="4" asp-for="AboutMe" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">Güncelle</button>
+    </form>
+
+</div>
+

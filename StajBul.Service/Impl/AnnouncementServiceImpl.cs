@@ -10,9 +10,11 @@ namespace StajBul.Service.Impl
     public class AnnouncementServiceImpl : IAnnouncementService
     {
         private IAnnouncementRepo announcementRepo;
-        public AnnouncementServiceImpl(IAnnouncementRepo announcementRepo)
+        private IAddressService addressService;
+        public AnnouncementServiceImpl(IAnnouncementRepo announcementRepo, IAddressService addressService)
         {
             this.announcementRepo = announcementRepo;
+            this.addressService = addressService;
         }
 
         public void addInternshipAnnouncement(InternshipAnnouncement internshipAnnouncement)
@@ -63,6 +65,8 @@ namespace StajBul.Service.Impl
         public void updateInternshipAnnouncement(InternshipAnnouncement internshipAnnouncement)
         {
             announcementRepo.updateInternshipAnnouncement(internshipAnnouncement);
+            addressService.updateAddress(internshipAnnouncement.Address);
+            
         }
     }
 }

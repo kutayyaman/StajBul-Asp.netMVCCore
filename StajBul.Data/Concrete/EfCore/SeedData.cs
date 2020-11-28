@@ -52,10 +52,10 @@ namespace StajBul.Data.Concrete.EfCore
             if (!context.Addresses.Any())
             {
                 context.Addresses.AddRange(
-                        new Address() { AddressLine1 = "bla bla cad. bla bla sok.", AddressLine2 = "adresline 2 bos birakilabilsin bu ilerde", District = "ilce bilgisi buraya", PostalCode = "34044", Phone = "5380152255", AddressName = "Evim", CityId = 1, UserId = 1 },
-                        new Address() { AddressLine1 = "gop meydan bla blaa", AddressLine2 = "adresline 2 bos birakilabilsin bu ilerde", District = "ilce bilgisi buraya", PostalCode = "34044", Phone = "5380152255", AddressName = "Evim", CityId = 2, UserId = 2 },
-                        new Address() { AddressLine1 = "karagumruk fatih caddesi falan filan", AddressLine2 = "adresline 2 bos birakilabilsin bu ilerde", District = "ilce bilgisi buraya", PostalCode = "34044", Phone = "5380152255", AddressName = "Evim", CityId = 3, UserId = 3 },
-                        new Address() { AddressLine1 = "bayrampasa forum istanbul yani ", AddressLine2 = "adresline 2 bos birakilabilsin bu ilerde", District = "ilce bilgisi buraya", PostalCode = "34044", Phone = "5380152255", AddressName = "Evim", CityId = 3, UserId = 4 }
+                        new Address() { AddressLine1 = "bla bla cad. bla bla sok.", AddressLine2 = "adresline 2 bos birakilabilsin bu ilerde", District = "ilce bilgisi buraya", PostalCode = "34044", Phone = "5380152255", AddressName = "Evim", CityId = 1 },
+                        new Address() { AddressLine1 = "gop meydan bla blaa", AddressLine2 = "adresline 2 bos birakilabilsin bu ilerde", District = "ilce bilgisi buraya", PostalCode = "34044", Phone = "5380152255", AddressName = "Evim", CityId = 2 },
+                        new Address() { AddressLine1 = "karagumruk fatih caddesi falan filan", AddressLine2 = "adresline 2 bos birakilabilsin bu ilerde", District = "ilce bilgisi buraya", PostalCode = "34044", Phone = "5380152255", AddressName = "Evim", CityId = 3 },
+                        new Address() { AddressLine1 = "bayrampasa forum istanbul yani ", AddressLine2 = "adresline 2 bos birakilabilsin bu ilerde", District = "ilce bilgisi buraya", PostalCode = "34044", Phone = "5380152255", AddressName = "Evim", CityId = 3 }
                     );
                 context.SaveChanges();
             }

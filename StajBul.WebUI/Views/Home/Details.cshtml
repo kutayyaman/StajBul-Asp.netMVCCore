@@ -15,6 +15,7 @@
                     <small class="card-subtitle mb-2 text-muted">@Model.Category.CategoryName</small>
                     <p class="card-text">@Model.Explanation <br />@Model.Address?.City.CityName<br />@Model.Address?.District<br />@Model.Address?.AddressLine1<br />@Model.Address?.AddressLine2<br />@Model.Address?.PostalCode<br />@Model.Mail </p>
                     <a href='javascript:history.go(-1)' class="btn btn-primary">Geri Git</a>
+                    <a class="btn btn-primary ml-2" href="/User/Profile?id=@Model.UserId">Kullanıcı Profilini Gör</a>
                 </div>
                 <div class="card-footer ">
                     @Model.CreatedDate

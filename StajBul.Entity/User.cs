@@ -13,7 +13,9 @@ namespace StajBul.Entity
         public string UserSurname { get; set; }
         public int Age { get; set; }
         public RowStatus RowStatus { get; set; } = RowStatus.ACTIVE;
-        public virtual ICollection<Address> Addresses { get; set; }
+        public string? AboutMe { get; set; }
+        public int? AddressId { get; set; }
+        public Address? Address { get; set; }
         public virtual ICollection<InternshipAnnouncement> InternshipAnnouncements { get; set; }
     }
 

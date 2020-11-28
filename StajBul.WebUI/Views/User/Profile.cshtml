@@ -13,36 +13,51 @@
                             <img src="~/images/loginPage.png" alt="Admin" class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <h4>@Model.User.UserName</h4>
-                                <p class="text-secondary mb-1">Ne İş Yaptığı Bilgisi Gelecek Databasede Değişiklik Gerekebilir</p>
-                                <p class="text-muted font-size-sm">Adres Bilgisi Gelecek Her Kullanıcının Bir Adresi Olcak Şekilde Düzenle Eğer Yoksa Bir Buton Ciksin Eklesin</p>
+                                <p class="text-secondary mb-1">
+                                    @if (Model.User.AboutMe != null)
+                                    {
+                                        @Model.User.AboutMe;
+                                        if (User.Identity.Name == @Model.User.UserName)
+                                        {
+                                            <div class="float-none"><a class="btn btn-primary btn-sm" asp-controller="User" asp-action="EditAboutMe" asp-route-id="@Model.User.Id"><i class="fas fa-edit">Güncelle</i></a></div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (User.Identity.Name == @Model.User.UserName)
+                                        {
+                                            <div class="float-none"><a class="btn btn-primary btn-sm" asp-controller="User" asp-action="AddAboutMe" asp-route-id="@Model.User.Id"><i class="fas fa-edit">Hakkımda Bilgiler Ekle</i></a></div>
+                                        }
+                                    }
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mt-3">
+                @*<div class="card mt-3">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">Website</h6>
-                            <span class="text-secondary">https://bootdey.com</span>
+                            <span class="text-secondary">DATABASEDEN CEKILCEK</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">Github</h6>
-                            <span class="text-secondary">bootdey</span>
+                            <span class="text-secondary">DATABASEDEN CEKILCEK</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">Twitter</h6>
-                            <span class="text-secondary">BAKACAZ</span>
+                            <span class="text-secondary">DATABASEDEN CEKILCEK</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">Instagram</h6>
-                            <span class="text-secondary">bootdey</span>
+                            <span class="text-secondary">DATABASEDEN CEKILCEK</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">Facebook</h6>
-                            <span class="text-secondary">bootdey</span>
+                            <span class="text-secondary">DATABASEDEN CEKILCEK</span>
                         </li>
                     </ul>
-                </div>
+                </div>*@
             </div>
             <div class="col-md-8">
                 <div class="card mb-3">
@@ -71,7 +86,21 @@
                                 <h6 class="mb-0">Adres Bilgisi</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                ADRES EKLENECEK DATABASEDE DEGISIKLIK GEREKEBILIR
+                                @if (Model.User.Address != null)
+                                {
+                                    @Model.User.Address.City.CityName <span> </span> @Model.User.Address.District <br /> @Model.User.Address.AddressLine1 <br /> @Model.User.Address.AddressLine2
+                                    if (User.Identity.Name == @Model.User.UserName)
+                                    {
+                                        <div class="float-right"><a class="btn btn-primary btn-sm" asp-controller="Address" asp-action="Edit" asp-route-id="@Model.User.Address.Id"><i class="fas fa-edit">Güncelle</i></a></div>
+                                    }
+                                }
+                                else
+                                {
+                                    if (User.Identity.Name == @Model.User.UserName)
+                                    {
+                                        <div class="float-right"><a class="btn btn-primary btn-sm" asp-controller="Address" asp-action="Create"><i class="fas fa-edit">Adres Ekle</i></a></div>
+                                    }
+                                }
                             </div>
                         </div>
                     </div>
@@ -90,7 +119,11 @@
                                         <p class="text-body font-size-sm">@announcement.Explanation</p>
                                     </div>
                                     <small>@announcement.CreatedDate</small>
-                                    @if (User.Identity.Name == announcement.User.UserName) { <div class="float-right"><a class="btn btn-danger btn-sm" asp-controller="Announcement" asp-action="Delete" asp-route-id="@announcement.Id"><i class="fas fa-times">Sil</i></a></div>}
+                                    @if (User.Identity.Name == announcement.User.UserName)
+                                    {
+                                        <div class="float-right"><a class="btn btn-danger btn-sm" asp-controller="Announcement" asp-action="Delete" asp-route-id="@announcement.Id"><i class="fas fa-times">Sil</i></a></div>
+                                        <div class="float-right"><a class="btn btn-primary btn-sm mr-2" asp-controller="Announcement" asp-action="Edit" asp-route-id="@announcement.Id"><i class="fas fa-edit">Güncelle</i></a></div>
+                                    }
                                 </div>
                             </div>
                         </div>

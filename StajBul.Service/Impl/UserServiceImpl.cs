@@ -42,6 +42,11 @@ namespace StajBul.Service.Impl
             return userRepo.getById(userId);
         }
 
+        public User getByUserName(string userName)
+        {
+            return userRepo.getByUserName(userName);
+        }
+
         public void updateUser(User user)
         {
             userRepo.updateUser(user);

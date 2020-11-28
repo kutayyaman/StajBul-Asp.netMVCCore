@@ -36,7 +36,12 @@ namespace StajBul.Data.Concrete.EfCore
 
         public User getById(int userId)
         {
-            return context.Users.FirstOrDefault(u => u.Id == userId && u.RowStatus == RowStatus.ACTIVE);
+            return context.Users.Include(u => u.Address).ThenInclude(a => a.City).FirstOrDefault(u => u.Id == userId && u.RowStatus == RowStatus.ACTIVE);
+        }
+
+        public User getByUserName(string userName)
+        {
+            return context.Users.Include(u => u.Address).ThenInclude(a => a.City).FirstOrDefault(u => u.UserName == userName && u.RowStatus == RowStatus.ACTIVE);
         }
 
         public void updateUser(User user)

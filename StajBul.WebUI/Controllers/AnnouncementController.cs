@@ -53,7 +53,7 @@ namespace StajBul.WebUI.Controllers
             DateTime dateTime = DateTime.Now;
             string createdDate = dateTime.ToString();
             announcement.CreatedDate = createdDate;
-            announcement.Address.UserId = announcement.UserId;
+            //announcement.Address.UserId = announcement.UserId; //Her adres bir user'a ait olcak diye bir sey yok bu ilanin adresi
             announcement.AddressId = addressService.getNextId();
             addressService.addAddress(announcement.Address);
             if (ModelState.IsValid)//Validasyonlar tamamsa demek oluyor yani validasyonlari ekledigim zaman anlamli olacak.
@@ -72,7 +72,10 @@ namespace StajBul.WebUI.Controllers
         {
             User user = await userManager.FindByNameAsync(User?.Identity?.Name);
             InternshipAnnouncement announcement = announcementService.getById(id);
-            
+            if(announcement == null)
+            {
+                return NotFound();
+            }
             if (announcement.UserId != user.Id && !User.IsInRole("Admin"))
             {
                 return NotFound();
@@ -80,6 +83,7 @@ namespace StajBul.WebUI.Controllers
             else
             {
                 ViewBag.categories = new SelectList(categoryService.getAll(), "Id", "CategoryName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
+                ViewBag.cities = new SelectList(cityService.getAll(), "Id", "CityName");
                 return View(announcementService.getById(id));
             }
         }
@@ -100,10 +104,11 @@ namespace StajBul.WebUI.Controllers
                     announcement.ModifiedDate = DateTime.Now.ToString();
                     announcementService.updateInternshipAnnouncement(announcement);
                     TempData["message"] = $"{announcement.Title} Güncellendi.";
-                    return RedirectToAction("List");
+                    return RedirectToAction("Index","Home");
                 }
 
                 ViewBag.categories = new SelectList(categoryService.getAll(), "Id", "CategoryName"); //kullaniciya CategoryName'ler gozukcek ama hangisini sectiyse onun Id'si formdan arka tarafa gelcek.
+                ViewBag.cities = new SelectList(cityService.getAll(), "Id", "CityName");
                 return View(announcement);
             }    
         }

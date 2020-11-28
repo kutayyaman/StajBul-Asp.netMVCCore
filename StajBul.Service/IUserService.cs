@@ -10,6 +10,7 @@ namespace StajBul.Service
     {
         IQueryable<User> getAll();
         User getById(int userId);
+        User getByUserName(string userName);
         void addUser(User user);
         void updateUser(User user);
         void deleteUserById(int userId);

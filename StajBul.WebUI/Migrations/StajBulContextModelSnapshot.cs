@@ -195,14 +195,9 @@ namespace StajBul.WebUI.Migrations
                     b.Property<int>("RowStatus")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CityId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("address");
                 });
@@ -335,7 +330,13 @@ namespace StajBul.WebUI.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
+                    b.Property<string>("AboutMe")
+                        .HasColumnType("text");
+
                     b.Property<int>("AccessFailedCount")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("AddressId")
                         .HasColumnType("integer");
 
                     b.Property<int>("Age")
@@ -395,6 +396,8 @@ namespace StajBul.WebUI.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AddressId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -465,15 +468,7 @@ namespace StajBul.WebUI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StajBul.Entity.User", "User")
-                        .WithMany("Addresses")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("City");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("StajBul.Entity.InternshipAnnouncement", b =>
@@ -503,6 +498,15 @@ namespace StajBul.WebUI.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("StajBul.Entity.User", b =>
+                {
+                    b.HasOne("StajBul.Entity.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId");
+
+                    b.Navigation("Address");
+                });
+
             modelBuilder.Entity("StajBul.Entity.Category", b =>
                 {
                     b.Navigation("InternshipAnnouncements");
@@ -510,8 +514,6 @@ namespace StajBul.WebUI.Migrations
 
             modelBuilder.Entity("StajBul.Entity.User", b =>
                 {
-                    b.Navigation("Addresses");
-
                     b.Navigation("InternshipAnnouncements");
                 });
 #pragma warning restore 612, 618
