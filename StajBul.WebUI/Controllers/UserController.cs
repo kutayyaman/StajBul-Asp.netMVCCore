@@ -20,8 +20,9 @@ namespace StajBul.WebUI.Controllers
         private IPasswordHasher<User> passwordHasher;
         private IUserValidator<User> userValidator;
         private SignInManager<User> signInManager;
+        private IAnnouncementService announcementService;
 
-        public UserController(IUserService userService, UserManager<User> userManager, IPasswordValidator<User> passwordValidator, IPasswordHasher<User> passwordHasher, IUserValidator<User> userValidator, SignInManager<User> signInManager)
+        public UserController(IUserService userService, UserManager<User> userManager, IPasswordValidator<User> passwordValidator, IPasswordHasher<User> passwordHasher, IUserValidator<User> userValidator, SignInManager<User> signInManager, IAnnouncementService announcementService)
         {
             this.userService = userService;
             this.userManager = userManager;
@@ -29,6 +30,7 @@ namespace StajBul.WebUI.Controllers
             this.passwordValidator = passwordValidator;
             this.userValidator = userValidator;
             this.signInManager = signInManager;
+            this.announcementService = announcementService;
         }
 
         [Authorize]
@@ -214,6 +216,39 @@ namespace StajBul.WebUI.Controllers
             await signInManager.SignOutAsync();
             TempData["message"] = "Başarıyla Çıkış Yaptınız.";
             return RedirectToAction("login");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Profile(string username)
+        {
+            UserProfileViewModel model = new UserProfileViewModel();
+
+            if (string.IsNullOrEmpty(username))
+            {
+                if (!User.Identity.IsAuthenticated)
+                {
+                    return RedirectToAction("Login");
+                }
+                else //profile sayfasina gitmek istiyor ancak kiminkine gitmek istedigni yazmamis ve siteye giris yapmis birisi varsa
+                {
+                    model.User = await userManager.FindByNameAsync(User.Identity.Name);
+                    model.Announcements = announcementService.getByUserId(model.User.Id).ToList();
+                }
+            }
+            else
+            {
+                model.User = await userManager.FindByNameAsync(username);
+                if(model.User == null)
+                {
+                    TempData["message"] = "Böyle Bir Profil Bulunamadı.";
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    model.Announcements = announcementService.getByUserId(model.User.Id).ToList();
+                }
+            }
+            return View(model);
         }
     }
 }

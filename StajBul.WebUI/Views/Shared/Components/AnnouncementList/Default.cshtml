@@ -36,6 +36,7 @@
                     </div>
                     <div class="card-footer text-center">
                         <a class="btn btn-outline-primary btn-sm mb-2" asp-controller="Home" asp-action="Details" asp-route-id="@announcement.Id">İlani Görüntüle</a>
+                        <a class="btn btn-outline-primary btn-sm mb-2" href="User/Profile?username=@announcement.User.UserName">Kullanıcı Profilini Gör</a>
                     </div>
                 </div>
             </div>

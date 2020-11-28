@@ -34,20 +34,20 @@ namespace StajBul.Data.Concrete.EfCore
 
         public IQueryable<InternshipAnnouncement> getAllStajyerAnnouncement()
         {
-            return context.Announcements.Include(a => a.Category).Include(a => a.Address.City).Where(a => a.RowStatus == RowStatus.ACTIVE && a.AnnouncementType == AnnouncementType.STAJYER).OrderByDescending(a => a.Id);
+            return context.Announcements.Include(a => a.Category).Include(a => a.User).Include(a => a.Address.City).Where(a => a.RowStatus == RowStatus.ACTIVE && a.AnnouncementType == AnnouncementType.STAJYER).OrderByDescending(a => a.Id);
         }
 
         public IQueryable<InternshipAnnouncement> getAllCompanyAnnouncement()
         {
-            return context.Announcements.Include(a => a.Category).Include(a => a.Address.City).Where(a => a.RowStatus == RowStatus.ACTIVE && a.AnnouncementType == AnnouncementType.COMPANY).OrderByDescending(a => a.Id);
+            return context.Announcements.Include(a => a.Category).Include(a => a.User).Include(a => a.Address.City).Where(a => a.RowStatus == RowStatus.ACTIVE && a.AnnouncementType == AnnouncementType.COMPANY).OrderByDescending(a => a.Id);
         }
         public IQueryable<InternshipAnnouncement> getAllStajyerAnnouncementByCategoryId(int categoryId)
         {
-            return context.Announcements.Include(a => a.Category).Include(a => a.Address.City).Where(a => a.RowStatus == RowStatus.ACTIVE && a.AnnouncementType == AnnouncementType.STAJYER && a.CategoryId == categoryId).OrderByDescending(a => a.Id);
+            return context.Announcements.Include(a => a.Category).Include(a => a.User).Include(a => a.Address.City).Where(a => a.RowStatus == RowStatus.ACTIVE && a.AnnouncementType == AnnouncementType.STAJYER && a.CategoryId == categoryId).OrderByDescending(a => a.Id);
         }
         public IQueryable<InternshipAnnouncement> getAllCompanyAnnouncementByCategoryId(int categoryId)
         {
-            return context.Announcements.Include(a => a.Category).Include(a => a.Address.City).Where(a => a.RowStatus == RowStatus.ACTIVE && a.AnnouncementType == AnnouncementType.COMPANY && a.CategoryId == categoryId).OrderByDescending(a => a.Id);
+            return context.Announcements.Include(a => a.Category).Include(a => a.User).Include(a => a.Address.City).Where(a => a.RowStatus == RowStatus.ACTIVE && a.AnnouncementType == AnnouncementType.COMPANY && a.CategoryId == categoryId).OrderByDescending(a => a.Id);
         }
 
         public InternshipAnnouncement getById(int internshipAnnouncementId)
@@ -59,6 +59,11 @@ namespace StajBul.Data.Concrete.EfCore
         {
             context.Entry(internshipAnnouncement).State = EntityState.Modified;
             context.SaveChanges();
+        }
+
+        public IQueryable<InternshipAnnouncement> getByUserId(int userId)
+        {
+            return context.Announcements.Include(a => a.Address).ThenInclude(a => a.City).Include(a => a.Category).Where(a => a.UserId == userId).Where(a => a.RowStatus == RowStatus.ACTIVE).OrderByDescending(a => a.Id);
         }
     }
 }

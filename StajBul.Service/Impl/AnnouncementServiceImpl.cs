@@ -55,6 +55,11 @@ namespace StajBul.Service.Impl
             return announcementRepo.getById(internshipAnnouncementId);
         }
 
+        public IQueryable<InternshipAnnouncement> getByUserId(int userId)
+        {
+            return announcementRepo.getByUserId(userId);
+        }
+
         public void updateInternshipAnnouncement(InternshipAnnouncement internshipAnnouncement)
         {
             announcementRepo.updateInternshipAnnouncement(internshipAnnouncement);

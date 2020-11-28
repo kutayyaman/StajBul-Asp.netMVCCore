@@ -133,7 +133,7 @@ namespace StajBul.WebUI.Controllers
             }
             announcementService.deleteInternshipAnnouncementById(id);
             TempData["message"] = id+ "id'li Kayıt Silindi.";
-            return RedirectToAction("List");
+            return RedirectToAction("Index","Home");
         }
 
     }

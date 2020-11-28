@@ -99,7 +99,7 @@ namespace StajBul.WebUI
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            SeedData.Seed(serviceProvider.GetRequiredService<StajBulContext>());
+            //SeedData.Seed(serviceProvider.GetRequiredService<StajBulContext>());
         }
     }
 }

@@ -10,9 +10,11 @@ namespace StajBul.Service.Impl
     public class UserServiceImpl : IUserService
     {
         private IUserRepo userRepo;
-        public UserServiceImpl(IUserRepo userRepo)
+        private IAnnouncementService announcementService;
+        public UserServiceImpl(IUserRepo userRepo, IAnnouncementService announcementService)
         {
             this.userRepo = userRepo;
+            this.announcementService = announcementService;
         }
 
         public void addUser(User user)
@@ -23,6 +25,11 @@ namespace StajBul.Service.Impl
         public void deleteUserById(int userId)
         {
             userRepo.deleteUserById(userId);
+            List<InternshipAnnouncement> announcements = announcementService.getByUserId(userId).ToList();
+            foreach (var announcement in announcements)
+            {
+                announcementService.deleteInternshipAnnouncementById(announcement.Id);
+            }
         }
 
         public IQueryable<User> getAll()
