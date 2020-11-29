@@ -10,8 +10,11 @@ namespace StajBul.WebUI.Models
         public int? CategoryId { get; set; }
         public bool? IsIntern { get; set; }
         public string? SearchedWords { get; set; }
+        public PaginationModel PaginationModel { get; set; }
+        public string? id { get; set; }
+        public string? username { get; set; }
 
-        public CategoryFilterModel(int? categoryId, bool? isIntern, string? searchedWords)
+        public CategoryFilterModel(int? categoryId = null, bool? isIntern = null, string? searchedWords = null)
         {
             this.CategoryId = categoryId;
             this.IsIntern = isIntern;

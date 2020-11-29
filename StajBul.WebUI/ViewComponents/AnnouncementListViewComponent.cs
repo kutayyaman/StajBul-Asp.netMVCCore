@@ -17,6 +17,7 @@ namespace StajBul.WebUI.ViewComponents
         }
         public IViewComponentResult Invoke(CategoryFilterModel categoryFilterModel)
         {
+            AnnouncementListAndPaginationModel announcementListAndPaginationModel = new AnnouncementListAndPaginationModel();
             string searchedWords = categoryFilterModel.SearchedWords?.ToLower();
             if (categoryFilterModel.CategoryId == null)
             {
@@ -25,15 +26,24 @@ namespace StajBul.WebUI.ViewComponents
                 {
                     query = query.Where(a => a.Explanation.ToLower().Contains(searchedWords) || a.Title.ToLower().Contains(searchedWords) || a.Name.ToLower().Contains(searchedWords));
                 }
-                return View(query);
+                announcementListAndPaginationModel.PaginationModel = categoryFilterModel.PaginationModel;
+                announcementListAndPaginationModel.PaginationModel.TotalItem = query.Count();
+                query = query.Skip(((categoryFilterModel.PaginationModel.CurrentPage - 1) * categoryFilterModel.PaginationModel.PageSize)).Take(categoryFilterModel.PaginationModel.PageSize);
+                announcementListAndPaginationModel.Announcements = query;
+                announcementListAndPaginationModel.CategoryFilterModel = categoryFilterModel;
+                return View(announcementListAndPaginationModel);
             }
             var queryWithCategoryId = (categoryFilterModel.IsIntern == true) ? announcementService.getAllStajyerAnnouncementByCategoryId((int)categoryFilterModel.CategoryId) : announcementService.getAllCompanyAnnouncementByCategoryId((int)categoryFilterModel.CategoryId);
             if (!string.IsNullOrEmpty(searchedWords))
             {
                 queryWithCategoryId = queryWithCategoryId.Where(a => a.Explanation.ToLower().Contains(searchedWords) || a.Title.ToLower().Contains(searchedWords) || a.Name.ToLower().Contains(searchedWords));
             }
-
-            return View(queryWithCategoryId);
+            announcementListAndPaginationModel.PaginationModel = categoryFilterModel.PaginationModel;
+            announcementListAndPaginationModel.PaginationModel.TotalItem = queryWithCategoryId.Count();
+            queryWithCategoryId = queryWithCategoryId.Skip(((categoryFilterModel.PaginationModel.CurrentPage - 1) * categoryFilterModel.PaginationModel.PageSize)).Take(categoryFilterModel.PaginationModel.PageSize);
+            announcementListAndPaginationModel.Announcements = queryWithCategoryId;
+            announcementListAndPaginationModel.CategoryFilterModel = categoryFilterModel;
+            return View(announcementListAndPaginationModel);
 
         }
     }

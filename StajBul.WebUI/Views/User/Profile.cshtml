@@ -1,40 +1,39 @@
-﻿@model UserProfileViewModel
+﻿@model AnnouncementListAndPaginationModel
 @{
     ViewData["Title"] = "Profile";
 }
-
-<div class="container">
-    <div class="main-body">
-        <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <img src="~/images/loginPage.png" alt="Admin" class="rounded-circle" width="150">
-                            <div class="mt-3">
-                                <h4>@Model.User.UserName</h4>
-                                <p class="text-secondary mb-1">
-                                    @if (Model.User.AboutMe != null)
-                                    {
-                                        @Model.User.AboutMe;
-                                        if (User.Identity.Name == @Model.User.UserName)
+    <div class="container">
+        <div class="main-body">
+            <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="~/images/loginPage.png" alt="Admin" class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    <h4>@Model.UserProfileViewModel.User.UserName</h4>
+                                    <p class="text-secondary mb-1">
+                                        @if (Model.UserProfileViewModel.User.AboutMe != null)
                                         {
-                                            <div class="float-none"><a class="btn btn-primary btn-sm" asp-controller="User" asp-action="EditAboutMe" asp-route-id="@Model.User.Id"><i class="fas fa-edit">Güncelle</i></a></div>
+                                            @Model.UserProfileViewModel.User.AboutMe;
+                                            if (User.Identity.Name == @Model.UserProfileViewModel.User.UserName)
+                                            {
+                                                <div class="float-none"><a class="btn btn-primary btn-sm" asp-controller="User" asp-action="EditAboutMe" asp-route-id="@Model.UserProfileViewModel.User.Id"><i class="fas fa-edit">Güncelle</i></a></div>
+                                            }
                                         }
-                                    }
-                                    else
-                                    {
-                                        if (User.Identity.Name == @Model.User.UserName)
+                                        else
                                         {
-                                            <div class="float-none"><a class="btn btn-primary btn-sm" asp-controller="User" asp-action="AddAboutMe" asp-route-id="@Model.User.Id"><i class="fas fa-edit">Hakkımda Bilgiler Ekle</i></a></div>
+                                            if (User.Identity.Name == @Model.UserProfileViewModel.User.UserName)
+                                            {
+                                                <div class="float-none"><a class="btn btn-primary btn-sm" asp-controller="User" asp-action="AddAboutMe" asp-route-id="@Model.UserProfileViewModel.User.Id"><i class="fas fa-edit">Hakkımda Bilgiler Ekle</i></a></div>
+                                            }
                                         }
-                                    }
-                                </p>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                @*<div class="card mt-3">
+                    @*<div class="card mt-3">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">Website</h6>
@@ -58,81 +57,93 @@
                         </li>
                     </ul>
                 </div>*@
-            </div>
-            <div class="col-md-8">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Adı Ve Soyadı</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                @Model.User.UserRealName @Model.User.UserSurname
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Email</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                @Model.User.Email
-                            </div>
-                        </div>
-                        <hr>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Adres Bilgisi</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                @if (Model.User.Address != null)
-                                {
-                                    @Model.User.Address.City.CityName <span> </span> @Model.User.Address.District <br /> @Model.User.Address.AddressLine1 <br /> @Model.User.Address.AddressLine2
-                                    if (User.Identity.Name == @Model.User.UserName)
-                                    {
-                                        <div class="float-right"><a class="btn btn-primary btn-sm" asp-controller="Address" asp-action="Edit" asp-route-id="@Model.User.Address.Id"><i class="fas fa-edit">Güncelle</i></a></div>
-                                    }
-                                }
-                                else
-                                {
-                                    if (User.Identity.Name == @Model.User.UserName)
-                                    {
-                                        <div class="float-right"><a class="btn btn-primary btn-sm" asp-controller="Address" asp-action="Create"><i class="fas fa-edit">Adres Ekle</i></a></div>
-                                    }
-                                }
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="row gutters-sm">
-                    @foreach (var announcement in Model.Announcements)
-                    {
-                        <div class="col-sm-6 mb-3">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">@announcement.Title</i>@announcement.Name</h6>
-                                    <small>@announcement.Category.CategoryName</small>
-                                    <small>@announcement.Address.City.CityName</small>
-                                    <small>@announcement.Address.Phone</small>
-                                    <div class="mt-3">
-                                        <p class="text-body font-size-sm">@announcement.Explanation</p>
-                                    </div>
-                                    <small>@announcement.CreatedDate</small>
-                                    @if (User.Identity.Name == announcement.User.UserName)
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Adı Ve Soyadı</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Model.UserProfileViewModel.User.UserRealName @Model.UserProfileViewModel.User.UserSurname
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Model.UserProfileViewModel.User.Email
+                                </div>
+                            </div>
+                            <hr>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Adres Bilgisi</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @if (Model.UserProfileViewModel.User.Address != null)
                                     {
-                                        <div class="float-right"><a class="btn btn-danger btn-sm" asp-controller="Announcement" asp-action="Delete" asp-route-id="@announcement.Id"><i class="fas fa-times">Sil</i></a></div>
-                                        <div class="float-right"><a class="btn btn-primary btn-sm mr-2" asp-controller="Announcement" asp-action="Edit" asp-route-id="@announcement.Id"><i class="fas fa-edit">Güncelle</i></a></div>
+                                        @Model.UserProfileViewModel.User.Address.City.CityName <span> </span> @Model.UserProfileViewModel.User.Address.District <br /> @Model.UserProfileViewModel.User.Address.AddressLine1 <br /> @Model.UserProfileViewModel.User.Address.AddressLine2
+                                        if (User.Identity.Name == @Model.UserProfileViewModel.User.UserName)
+                                        {
+                                            <div class="float-right"><a class="btn btn-primary btn-sm" asp-controller="Address" asp-action="Edit" asp-route-id="@Model.UserProfileViewModel.User.Address.Id"><i class="fas fa-edit">Güncelle</i></a></div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (User.Identity.Name == @Model.UserProfileViewModel.User.UserName)
+                                        {
+                                            <div class="float-right"><a class="btn btn-primary btn-sm" asp-controller="Address" asp-action="Create"><i class="fas fa-edit">Adres Ekle</i></a></div>
+                                        }
                                     }
                                 </div>
                             </div>
                         </div>
-                    }
+                    </div>
+                    <span class="badge badge-pill badge-primary">@Model.UserProfileViewModel.User.UserName Kişisine Ait @Model.PaginationModel.TotalItem Adet İlan Bulundu</span>
+                    <div class="row gutters-sm">
+                        @if (Model.UserProfileViewModel.Announcements.Count > 0)
+                        {
+                            @foreach (var announcement in Model.UserProfileViewModel.Announcements)
+                            {
+                                <div class="col-sm-6 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">@announcement.Title</i>@announcement.Name</h6>
+                                            <small>@announcement.Category.CategoryName</small>
+                                            <small>@announcement.Address.City.CityName</small>
+                                            <small>@announcement.Address.Phone</small>
+                                            <div class="mt-3">
+                                                <p class="text-body font-size-sm">@announcement.Explanation</p>
+                                            </div>
+                                            <small>@announcement.CreatedDate</small>
+                                            @if (User.Identity.Name == announcement.User.UserName)
+                                            {
+                                                <div class="float-right"><a class="btn btn-danger btn-sm" asp-controller="Announcement" asp-action="Delete" asp-route-id="@announcement.Id"><i class="fas fa-times">Sil</i></a></div>
+                                                <div class="float-right"><a class="btn btn-primary btn-sm mr-2" asp-controller="Announcement" asp-action="Edit" asp-route-id="@announcement.Id"><i class="fas fa-edit">Güncelle</i></a></div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="alert alert-info"> Bu Sayfada İlan Bulunamadı. </div>
+                        }
 
+                    </div>
+                    <div page-model="@Model" page-action="Profile"></div>
                 </div>
             </div>
+            
         </div>
     </div>
-</div>
+
+
 
 

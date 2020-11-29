@@ -1,9 +1,10 @@
-﻿@model IEnumerable<InternshipAnnouncement>
+﻿@model AnnouncementListAndPaginationModel
 
-@if (Model.Count() > 0)
+@if (Model.Announcements.Count() > 0)
 {
+    <span class="badge badge-pill badge-primary">@Model.PaginationModel.TotalItem Adet İlan Bulundu</span>
     <div class="row">
-        @foreach (var announcement in Model)
+        @foreach (var announcement in Model.Announcements)
         {
             <div class="col-md-4">
                 <div class="card mb-3">
@@ -42,6 +43,7 @@
             </div>
         }
     </div>
+    <div page-model="@Model" page-action="Index"></div>
 }
 else
 {

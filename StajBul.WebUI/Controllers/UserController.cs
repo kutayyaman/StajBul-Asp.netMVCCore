@@ -220,16 +220,30 @@ namespace StajBul.WebUI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Profile(string username ,string? id)
+        public async Task<IActionResult> Profile(string username ,string? id, int page = 1)
         {
+            if (page <= 0)
+            {
+                page = 1;
+            }
+            AnnouncementListAndPaginationModel returnModel = new AnnouncementListAndPaginationModel();
+            returnModel.CategoryFilterModel = new CategoryFilterModel();
+            returnModel.CategoryFilterModel.id = id;
+            returnModel.CategoryFilterModel.username = username;
             UserProfileViewModel model = new UserProfileViewModel();
-
+            PaginationModel paginationModel = new PaginationModel();
+            paginationModel.CurrentPage = page;
+            paginationModel.PageSize = 8;
+            returnModel.PaginationModel = paginationModel;
             if (string.IsNullOrEmpty(username))
             {
                 if (!string.IsNullOrEmpty(id)) //username ile degilde id ile profile ulasmak istemis
                 {
                     model.User = userService.getById(int.Parse(id));
-                    model.Announcements = announcementService.getByUserId(model.User.Id).ToList();
+                    var AnnouncementQueryable = announcementService.getByUserId(model.User.Id);
+                    returnModel.PaginationModel.TotalItem = AnnouncementQueryable.Count();
+                    model.Announcements = AnnouncementQueryable.Skip(((returnModel.PaginationModel.CurrentPage - 1) * returnModel.PaginationModel.PageSize)).Take(returnModel.PaginationModel.PageSize).ToList();
+                    //model.Announcements = announcementService.getByUserId(model.User.Id).ToList();
                 }
                 else //adam username veya id yollamamis
                 {     
@@ -240,7 +254,9 @@ namespace StajBul.WebUI.Controllers
                     else //profile sayfasina gitmek istiyor ancak kiminkine gitmek istedigni yazmamis ve siteye giris yapmis birisi varsa
                     {
                         model.User = userService.getByUserName(User.Identity.Name);
-                        model.Announcements = announcementService.getByUserId(model.User.Id).ToList();
+                        var AnnouncementQueryable = announcementService.getByUserId(model.User.Id);
+                        returnModel.PaginationModel.TotalItem = AnnouncementQueryable.Count();
+                        model.Announcements = AnnouncementQueryable.Skip(((returnModel.PaginationModel.CurrentPage - 1) * returnModel.PaginationModel.PageSize)).Take(returnModel.PaginationModel.PageSize).ToList();
                     }
                 }
             }
@@ -254,10 +270,13 @@ namespace StajBul.WebUI.Controllers
                 }
                 else
                 {
-                    model.Announcements = announcementService.getByUserId(model.User.Id).ToList();
+                    var AnnouncementQueryable = announcementService.getByUserId(model.User.Id);
+                    returnModel.PaginationModel.TotalItem = AnnouncementQueryable.Count();
+                    model.Announcements = AnnouncementQueryable.Skip(((returnModel.PaginationModel.CurrentPage - 1) * returnModel.PaginationModel.PageSize)).Take(returnModel.PaginationModel.PageSize).ToList();
                 }
             }
-            return View(model);
+            returnModel.UserProfileViewModel = model;
+            return View(returnModel);
         }
 
 
