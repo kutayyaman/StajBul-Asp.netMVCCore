@@ -18,6 +18,7 @@ namespace StajBul.Data.Abstract
         IQueryable<InternshipAnnouncement> getAllCompanyAnnouncementByCategoryId(int categoryId);
         IQueryable<InternshipAnnouncement> getAllStajyerAnnouncementByCategoryId(int categoryId);
         IQueryable<InternshipAnnouncement> getByUserId(int userId);
+        int getNextId();
 
     }
 }

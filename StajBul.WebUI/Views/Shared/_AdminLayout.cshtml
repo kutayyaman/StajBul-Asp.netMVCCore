@@ -10,48 +10,75 @@
 </head>
 <body>
 
-    <div class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
-        <div class="container">
 
-            <a asp-controller="Home" asp-action="Index" class="navbar-brand">Admin</a>
+    <nav class="navbar navbar-dark bg-info navbar-expand-lg fixed-top">
+        <a asp-controller="Home" asp-action="Index" class="navbar-brand">Admin</a>
 
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-stajbul" aria-controls="navbar-stajbul">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="nav-item">
+            @RenderSection("SearchBar", false)
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-stajbul">
             <ul class="navbar-nav mr-auto">
-                <li class="navbar-nav">
-                    <a asp-controller="Home" asp-action="Index" asp-route-isIntern=false class="nav-link active">Staj Yeri İlanları</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        İlanlar
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a asp-controller="Home" asp-action="Index" asp-route-isIntern=false class="dropdown-item">Staj Yeri İlanları</a>
+                        <a asp-controller="Home" asp-action="Index" asp-route-isIntern=true class="dropdown-item">Staj Arama İlanları</a>
+                    </div>
                 </li>
-                <li class="navbar-nav">
-                    <a asp-controller="Home" asp-action="Index" asp-route-isIntern=true class="nav-link active">Staj Arama İlanları</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Kullanici İslemleri
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a asp-controller="User" asp-action="Create" class="dropdown-item">Kullanıcı Oluştur</a>
+                        <a asp-controller="User" asp-action="List" class="dropdown-item">Kullanıcıları Listele</a>
+
+                    </div>
                 </li>
-                <li class="navbar-nav">
-                    <a asp-controller="User" asp-action="Create" class="nav-link active">Kullanıcı Oluştur</a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Role İslemleri
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a asp-controller="Role" asp-action="Create" class="dropdown-item">Role Oluştur</a>
+                        <a asp-controller="Role" asp-action="List" class="dropdown-item">Rolleri Listele</a>
+
+                    </div>
                 </li>
-                <li class="navbar-nav">
-                    <a asp-controller="User" asp-action="List" class="nav-link active">Kullanıcıları Listele</a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        İlan İşlemleri
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a asp-controller="Announcement" asp-action="List" class="dropdown-item">İlanları Listele</a>
+                        <a asp-controller="Announcement" asp-action="Create" class="dropdown-item">
+                            İlan Ekle
+                            <i class="fas fa-plus"></i>
+                        </a>
+
+                    </div>
                 </li>
-                <li class="navbar-nav">
-                    <a asp-controller="Role" asp-action="Create" class="nav-link active">Role Oluştur</a>
-                </li>
-                <li class="navbar-nav">
-                    <a asp-controller="Role" asp-action="List" class="nav-link active">Rolleri Listele</a>
-                </li>
-                <li class="navbar-nav">
-                    <a asp-controller="Announcement" asp-action="List" class="nav-link active">İlanları Listele</a>
-                </li>
-                <li class="navbar-nav">
-                    <a asp-controller="Category" asp-action="Create" class="nav-link active">Kategori Oluştur</a>
-                </li>
-                <li class="navbar-nav">
-                    <a asp-controller="Category" asp-action="List" class="nav-link active">Kategorileri Listele</a>
-                </li>
-                <li class="navbar-nav">
-                    <a href="" class="nav-link active">Hakkında</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Kategori İşlemleri
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a asp-controller="Category" asp-action="Create" class="dropdown-item">Kategori Oluştur</a>
+                        <a asp-controller="Category" asp-action="List" class="dropdown-item">Kategorileri Listele</a>
+                    </div>
                 </li>
             </ul>
+           
 
             <ul class="navbar-nav ml-auto">
-                <li class="navbar-nav">
-                    @RenderSection("SearchBar", false)
-                </li>
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <li class="navbar-nav">
@@ -76,12 +103,7 @@
                         </a>
                     </li>
                 }
-                <li class="navbar-nav">
-                    <a asp-controller="Announcement" asp-action="Create" class="nav-link active">
-                        İlan Ekle
-                        <i class="fas fa-plus"></i>
-                    </a>
-                </li>
+
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li class="navbar-nav">
@@ -91,6 +113,23 @@
                         </a>
                     </li>
                 }
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+
+
+    <div class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+        <div class="container">
+
+            
+
+
+            <ul class="navbar-nav ml-auto">
+
             </ul>
 
         </div>

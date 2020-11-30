@@ -240,6 +240,8 @@ namespace StajBul.WebUI.Controllers
                 if (!string.IsNullOrEmpty(id)) //username ile degilde id ile profile ulasmak istemis
                 {
                     model.User = userService.getById(int.Parse(id));
+                    if (model.User == null)
+                        return NotFound();
                     var AnnouncementQueryable = announcementService.getByUserId(model.User.Id);
                     returnModel.PaginationModel.TotalItem = AnnouncementQueryable.Count();
                     model.Announcements = AnnouncementQueryable.Skip(((returnModel.PaginationModel.CurrentPage - 1) * returnModel.PaginationModel.PageSize)).Take(returnModel.PaginationModel.PageSize).ToList();
@@ -262,7 +264,7 @@ namespace StajBul.WebUI.Controllers
             }
             else
             {
-                model.User = await userManager.FindByNameAsync(username);
+                model.User = userService.getByUserName(username);
                 if(model.User == null)
                 {
                     TempData["message"] = "Böyle Bir Profil Bulunamadı.";

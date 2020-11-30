@@ -65,5 +65,10 @@ namespace StajBul.Data.Concrete.EfCore
         {
             return context.Announcements.Include(a => a.Address).ThenInclude(a => a.City).Include(a => a.Category).Where(a => a.UserId == userId).Where(a => a.RowStatus == RowStatus.ACTIVE).OrderByDescending(a => a.Id);
         }
+
+        public int getNextId()
+        {
+            return context.Announcements.Max(a => a.Id) + 1;
+        }
     }
 }

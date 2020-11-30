@@ -10,70 +10,72 @@
 </head>
 <body>
 
-    <div class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
-        <div class="container">
-
+    <nav class="navbar navbar-dark bg-info navbar-expand-lg fixed-top">
             <a asp-controller="Home" asp-action="Index" class="navbar-brand">StajBul</a>
 
-            <ul class="navbar-nav mr-auto">
-                <li class="navbar-nav">
-                    <a asp-controller="Home" asp-action="Index" asp-route-isIntern=false class="nav-link active">Staj Yeri İlanları</a>
-                </li>
-                <li class="navbar-nav">
-                    <a asp-controller="Home" asp-action="Index" asp-route-isIntern=true class="nav-link active">Staj Arama İlanları</a>
-                </li>
-                <li class="navbar-nav">
-                    <a href="" class="nav-link active">Hakkında</a>
-                </li>
-            </ul>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-stajbul" aria-controls="navbar-stajbul">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="nav-item">
+                @RenderSection("SearchBar", false)
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-stajbul">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a asp-controller="Home" asp-action="Index" asp-route-isIntern=false class="nav-link active">Staj Yeri İlanları</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Home" asp-action="Index" asp-route-isIntern=true class="nav-link active">Staj Arama İlanları</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link active">Hakkında</a>
+                    </li>
+                </ul>
 
-            <ul class="navbar-nav ml-auto">
-                <li class="navbar-nav">
-                    @RenderSection("SearchBar", false)
-                </li>
-                @if (!User.Identity.IsAuthenticated)
-                {
-                    <li class="navbar-nav">
-                        <a asp-controller="User" asp-action="Login" class="nav-link active">
-                            Giriş Yap
-                            <i class="fas fa-sign-in-alt"></i>
+                <ul class="navbar-nav ml-auto">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a asp-controller="User" asp-action="Login" class="nav-link active">
+                                Giriş Yap
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="User" asp-action="Create" class="nav-link active">
+                                Üye Ol
+                                <i class="fas fa-user-plus"></i>
+                            </a>
+                        </li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a asp-controller="User" asp-action="Logout" class="nav-link active">
+                                Çıkış Yap
+                                <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                        </li>
+                    }
+                    <li class="nav-item">
+                        <a asp-controller="Announcement" asp-action="Create" class="nav-link active">
+                            İlan Ekle
+                            <i class="fas fa-plus"></i>
                         </a>
                     </li>
-                    <li class="navbar-nav">
-                        <a asp-controller="User" asp-action="Create" class="nav-link active">
-                            Üye Ol
-                            <i class="fas fa-user-plus"></i>
-                        </a>
-                    </li>
-                }
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li class="navbar-nav">
-                        <a asp-controller="User" asp-action="Logout" class="nav-link active">
-                            Çıkış Yap
-                            <i class="fas fa-sign-out-alt"></i>
-                        </a>
-                    </li>
-                }
-                <li class="navbar-nav">
-                    <a asp-controller="Announcement" asp-action="Create" class="nav-link active">
-                        İlan Ekle
-                        <i class="fas fa-plus"></i>
-                    </a>
-                </li>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li class="navbar-nav">
-                        <a asp-controller="User" asp-action="Profile" class="nav-link active">
-                            Profilim
-                            <i class="fas fa-user"></i>
-                        </a>
-                    </li>
-                }
-            </ul>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a asp-controller="User" asp-action="Profile" class="nav-link active">
+                                Profilim
+                                <i class="fas fa-user"></i>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+    </nav>
 
-        </div>
-    </div>
 
     <div class="container mt-2">
         @if (TempData["message"] != null)

@@ -68,5 +68,9 @@ namespace StajBul.Service.Impl
             addressService.updateAddress(internshipAnnouncement.Address);
             
         }
+        public int getNextId()
+        {
+            return announcementRepo.getNextId();
+        }
     }
 }

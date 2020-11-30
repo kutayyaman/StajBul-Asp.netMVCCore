@@ -58,6 +58,7 @@ namespace StajBul.WebUI.Controllers
             addressService.addAddress(announcement.Address);
             if (ModelState.IsValid)//Validasyonlar tamamsa demek oluyor yani validasyonlari ekledigim zaman anlamli olacak.
             {
+                announcement.Id = announcementService.getNextId();
                 announcementService.addInternshipAnnouncement(announcement);
                 return RedirectToAction("Details","Home", new { id = announcement.Id });
             }
