@@ -17,6 +17,7 @@ namespace StajBul.Entity
         public int? AddressId { get; set; }
         public Address? Address { get; set; }
         public virtual ICollection<InternshipAnnouncement> InternshipAnnouncements { get; set; }
+        public string? CreatedDate { get; set; }
     }
 
 }

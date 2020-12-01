@@ -50,8 +50,11 @@ namespace StajBul.WebUI
             services.AddTransient<ICityService, CityServiceImpl>();
             services.AddTransient<IUserService, UserServiceImpl>();
 
+            //services.AddDbContext<StajBulContext>(options =>
+            //options.UseNpgsql(Configuration.GetConnectionString("StajBulConnectionPostgreSQL"), b=>b.MigrationsAssembly("StajBul.WebUI")));
+
             services.AddDbContext<StajBulContext>(options =>
-            options.UseNpgsql(Configuration.GetConnectionString("StajBulConnection"), b=>b.MigrationsAssembly("StajBul.WebUI")));
+            options.UseSqlServer(Configuration.GetConnectionString("StajBulConnectionMYSQL"), b=>b.MigrationsAssembly("StajBul.WebUI")));
 
             services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme,
                                                                 opt =>
