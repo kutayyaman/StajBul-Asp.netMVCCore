@@ -389,6 +389,7 @@ namespace StajBul.WebUI.Controllers
                 var user = await userManager.FindByEmailAsync(model.Email);
                 if(user != null)
                 {
+                    model.Token =model.Token.Replace(" ", "+");
                     var result = await userManager.ResetPasswordAsync(user, model.Token, model.Password);
                     if (result.Succeeded)
                     {

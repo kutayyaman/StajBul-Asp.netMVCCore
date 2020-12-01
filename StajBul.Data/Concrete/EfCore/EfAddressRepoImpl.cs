@@ -25,6 +25,10 @@ namespace StajBul.Data.Concrete.EfCore
 
         public int getNextId()
         {
+            if (!context.Addresses.Any())
+            {
+                return 1;
+            }
             return context.Addresses.Max(c => c.Id) + 1;
         }
 

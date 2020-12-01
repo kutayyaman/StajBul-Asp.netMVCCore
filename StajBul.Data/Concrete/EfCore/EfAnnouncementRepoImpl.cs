@@ -68,6 +68,10 @@ namespace StajBul.Data.Concrete.EfCore
 
         public int getNextId()
         {
+            if (!context.Announcements.Any())
+            {
+                return 1;
+            }
             return context.Announcements.Max(a => a.Id) + 1;
         }
     }
