@@ -56,10 +56,10 @@ namespace StajBul.WebUI.Controllers
             if (ModelState.IsValid)//Validasyonlar tamamsa demek oluyor yani validasyonlari ekledigim zaman anlamli olacak.
             {
                 //announcement.Address.UserId = announcement.UserId; //Her adres bir user'a ait olcak diye bir sey yok bu ilanin adresi
-                announcement.AddressId = addressService.getNextId();
+                ///announcement.AddressId = addressService.getNextId(); //Bu sql serverda hata veriyor
                 addressService.addAddress(announcement.Address);
-           
-                announcement.Id = announcementService.getNextId();
+
+                // announcement.Id = announcementService.getNextId();//Bu sql serverda hata veriyor
                 announcementService.addInternshipAnnouncement(announcement);
                 return RedirectToAction("Details","Home", new { id = announcement.Id });
             }
