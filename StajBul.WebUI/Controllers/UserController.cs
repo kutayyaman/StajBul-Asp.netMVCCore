@@ -61,9 +61,11 @@ namespace StajBul.WebUI.Controllers
                 user.Email = registerModel.Email;
                 user.UserRealName = registerModel.UserRealName;
 
+                
+
                 var result = await userManager.CreateAsync(user,registerModel.Password);
 
-                if (result.Succeeded)
+                if (result.Succeeded && ModelState.IsValid)
                 {
                     TempData["message"] = $"{user.UserName} Kullanıcı Adıyla Üyelik Oluşturuldu.";
                     return View("Login");

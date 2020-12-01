@@ -38,6 +38,25 @@ namespace StajBul.WebUI.Infrastructure
                 });
             }
 
+            bool mailExists = manager.Users.Any(u => u.Email == user.Email);
+            if (mailExists)
+            {
+                errors.Add(new IdentityError()
+                {
+                    Code = "EmailExistError",
+                    Description = "Bu Mail Adresi Daha Önceden Üye Olmuş"
+                });
+            }
+            bool usernameExists = manager.Users.Any(u => u.UserName == user.UserName);
+            if (usernameExists)
+            {
+                errors.Add(new IdentityError()
+                {
+                    Code = "UsernameExists",
+                    Description = "Bu Kullanıcı Adı Daha Önceden Üye Olmuş"
+                });
+            }
+
             return Task.FromResult(errors.Count == 0 ? IdentityResult.Success : IdentityResult.Failed(errors.ToArray()));
 
         }
