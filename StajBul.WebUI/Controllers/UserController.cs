@@ -52,6 +52,16 @@ namespace StajBul.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(RegisterModel registerModel)
         {
+            bool mailExists = userManager.Users.Any(u => u.Email == registerModel.Email);
+            if (mailExists)
+            {
+                ModelState.AddModelError("", "Bu Mail Adresi İle Bir Hesap Bulunuyor.");
+            }
+            bool usernameExists = userManager.Users.Any(u => u.UserName == registerModel.UserName);
+            if (usernameExists)
+            {
+                ModelState.AddModelError("", "Bu Kullanıcı Adı Kullanılıyor.");
+            }
             if (ModelState.IsValid)
             {
                 User user = new User();
@@ -362,7 +372,7 @@ namespace StajBul.WebUI.Controllers
                 string link = "https://localhost:44319/User/ResetPassword?Email=" + user.Email + "&Token=" + token;
                 var message = new Message(new string[] { user.Email.ToString() }, "StajBul.com Şifreni Sıfırla", link);
                 emailSender.SendEmail(message);
-                TempData["message"] = "Şifrenizi Sıfırlamanız İçin Mail Yolladık.";
+                TempData["message"] = "Şifrenizi Sıfırlamanız İçin Mail Yolladık. Eğer Maili Göremiyorsanız Spam Kısmına Bakın Oraya Atmış Olabilir.";
                 return RedirectToAction("Login");
 
             }

@@ -10039,3 +10039,10 @@ a.text-dark:hover, a.text-dark:focus {
 body {
     padding-top: 70px;
 }
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+}

@@ -37,5 +37,10 @@ namespace StajBul.WebUI.Controllers
             InternshipAnnouncement announcement = announcementService.getById(id);
             return View(announcement);
         }
+
+        public IActionResult About()
+        {
+            return View();
+        }
     }
 }

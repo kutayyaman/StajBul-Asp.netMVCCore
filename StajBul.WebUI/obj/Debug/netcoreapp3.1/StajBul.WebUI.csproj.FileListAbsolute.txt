@@ -186,3 +186,4 @@ C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\NETCor
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\EmailService.dll
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\EmailService.pdb
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs

@@ -53,11 +53,12 @@ namespace StajBul.WebUI.Controllers
             DateTime dateTime = DateTime.Now;
             string createdDate = dateTime.ToString();
             announcement.CreatedDate = createdDate;
-            //announcement.Address.UserId = announcement.UserId; //Her adres bir user'a ait olcak diye bir sey yok bu ilanin adresi
-            announcement.AddressId = addressService.getNextId();
-            addressService.addAddress(announcement.Address);
             if (ModelState.IsValid)//Validasyonlar tamamsa demek oluyor yani validasyonlari ekledigim zaman anlamli olacak.
             {
+                //announcement.Address.UserId = announcement.UserId; //Her adres bir user'a ait olcak diye bir sey yok bu ilanin adresi
+                announcement.AddressId = addressService.getNextId();
+                addressService.addAddress(announcement.Address);
+           
                 announcement.Id = announcementService.getNextId();
                 announcementService.addInternshipAnnouncement(announcement);
                 return RedirectToAction("Details","Home", new { id = announcement.Id });
