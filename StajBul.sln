@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StajBul.Entity", "StajBul.E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StajBul.Data", "StajBul.Data\StajBul.Data.csproj", "{5F925D8D-D3A1-4DBA-B232-8354517BBDE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StajBul.Service", "StajBul.Service\StajBul.Service.csproj", "{4A45B026-6387-4432-8953-E3AFEFA3A4F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StajBul.Service", "StajBul.Service\StajBul.Service.csproj", "{4A45B026-6387-4432-8953-E3AFEFA3A4F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailService", "EmailService\EmailService.csproj", "{139D476E-7E68-49AD-AF2F-3FE371C314A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4A45B026-6387-4432-8953-E3AFEFA3A4F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A45B026-6387-4432-8953-E3AFEFA3A4F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A45B026-6387-4432-8953-E3AFEFA3A4F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{139D476E-7E68-49AD-AF2F-3FE371C314A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139D476E-7E68-49AD-AF2F-3FE371C314A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139D476E-7E68-49AD-AF2F-3FE371C314A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139D476E-7E68-49AD-AF2F-3FE371C314A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

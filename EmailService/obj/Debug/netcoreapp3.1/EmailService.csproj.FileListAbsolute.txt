@@ -1,0 +1,9 @@
+C:\Users\kutay\source\repos\StajBul\EmailService\bin\Debug\netcoreapp3.1\EmailService.deps.json
+C:\Users\kutay\source\repos\StajBul\EmailService\bin\Debug\netcoreapp3.1\EmailService.dll
+C:\Users\kutay\source\repos\StajBul\EmailService\bin\Debug\netcoreapp3.1\EmailService.pdb
+C:\Users\kutay\source\repos\StajBul\EmailService\obj\Debug\netcoreapp3.1\EmailService.csprojAssemblyReference.cache
+C:\Users\kutay\source\repos\StajBul\EmailService\obj\Debug\netcoreapp3.1\EmailService.AssemblyInfoInputs.cache
+C:\Users\kutay\source\repos\StajBul\EmailService\obj\Debug\netcoreapp3.1\EmailService.AssemblyInfo.cs
+C:\Users\kutay\source\repos\StajBul\EmailService\obj\Debug\netcoreapp3.1\EmailService.csproj.CoreCompileInputs.cache
+C:\Users\kutay\source\repos\StajBul\EmailService\obj\Debug\netcoreapp3.1\EmailService.dll
+C:\Users\kutay\source\repos\StajBul\EmailService\obj\Debug\netcoreapp3.1\EmailService.pdb

@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace StajBul.WebUI.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitiliazeMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -331,6 +331,12 @@ namespace StajBul.WebUI.Migrations
                 name: "IX_AspNetUsers_AddressId",
                 table: "AspNetUsers",
                 column: "AddressId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_Email",
+                table: "AspNetUsers",
+                column: "Email",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",

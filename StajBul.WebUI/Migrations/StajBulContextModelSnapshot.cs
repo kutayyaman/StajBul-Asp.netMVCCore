@@ -399,6 +399,9 @@ namespace StajBul.WebUI.Migrations
 
                     b.HasIndex("AddressId");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 

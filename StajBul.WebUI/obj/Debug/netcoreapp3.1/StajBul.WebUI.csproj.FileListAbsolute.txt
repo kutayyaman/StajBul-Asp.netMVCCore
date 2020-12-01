@@ -178,3 +178,11 @@ C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\User\AddAboutMe.cshtml.g.cs
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\User\EditAboutMe.cshtml.g.cs
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\scopedcss\bundle\StajBul.WebUI.styles.css
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\User\ResetPassword.cshtml.g.cs
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\User\IForgetMyPassword.cshtml.g.cs
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\NETCore.MailKit.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\EmailService.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\EmailService.pdb

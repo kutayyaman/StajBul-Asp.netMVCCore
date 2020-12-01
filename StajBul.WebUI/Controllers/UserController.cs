@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EmailService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,8 +22,9 @@ namespace StajBul.WebUI.Controllers
         private IUserValidator<User> userValidator;
         private SignInManager<User> signInManager;
         private IAnnouncementService announcementService;
+        private readonly IEmailSender emailSender;
 
-        public UserController(IUserService userService, UserManager<User> userManager, IPasswordValidator<User> passwordValidator, IPasswordHasher<User> passwordHasher, IUserValidator<User> userValidator, SignInManager<User> signInManager, IAnnouncementService announcementService)
+        public UserController(IUserService userService, UserManager<User> userManager, IPasswordValidator<User> passwordValidator, IPasswordHasher<User> passwordHasher, IUserValidator<User> userValidator, SignInManager<User> signInManager, IAnnouncementService announcementService, IEmailSender emailSender)
         {
             this.userService = userService;
             this.userManager = userManager;
@@ -31,6 +33,7 @@ namespace StajBul.WebUI.Controllers
             this.userValidator = userValidator;
             this.signInManager = signInManager;
             this.announcementService = announcementService;
+            this.emailSender = emailSender;
         }
 
         [Authorize]
@@ -334,6 +337,73 @@ namespace StajBul.WebUI.Controllers
             userInSystem.AboutMe = user.AboutMe;
             await userManager.UpdateAsync(userInSystem);
             return RedirectToAction("Profile","User");
+        }
+
+        [HttpGet]
+        public IActionResult IForgetMyPassword()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> IForgetMyPassword(string email)
+        {
+            User user = await userManager.FindByEmailAsync(email);
+            if(user == null)
+            {
+                ModelState.AddModelError("", "Kayıtsız Mail Adresi");
+            }
+            else
+            {
+                string token = await userManager.GeneratePasswordResetTokenAsync(user);
+                string link = "https://localhost:44319/User/ResetPassword?Email=" + user.Email + "&Token=" + token;
+                var message = new Message(new string[] { user.Email.ToString() }, "StajBul.com Şifreni Sıfırla", link);
+                emailSender.SendEmail(message);
+                TempData["message"] = "Şifrenizi Sıfırlamanız İçin Mail Yolladık.";
+                return RedirectToAction("Login");
+
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ResetPassword(string token, string email)
+        {
+            if(token == null || email == null)
+            {
+                ModelState.AddModelError("", "Geçersiz Resetleme Token'ı geldi");
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await userManager.FindByEmailAsync(model.Email);
+                if(user != null)
+                {
+                    var result = await userManager.ResetPasswordAsync(user, model.Token, model.Password);
+                    if (result.Succeeded)
+                    {
+                        TempData["message"] = user.UserName +" Şifrenizi Yenilediniz Şimdi Giriş Yapabilirsiniz";
+                        return RedirectToAction("Login");
+                    }
+                    foreach(var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View(model);
+                }
+                TempData["message"] = model.Email + " Bu Maile Ait Bir Kullanıcı Bulunamadı";
+                RedirectToAction("Login");
+
+            }
+            return View(model);
         }
     }
 }

@@ -10,8 +10,8 @@ using StajBul.Data.Concrete.EfCore;
 namespace StajBul.WebUI.Migrations
 {
     [DbContext(typeof(StajBulContext))]
-    [Migration("20201128155044_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20201130221058_InitiliazeMigration")]
+    partial class InitiliazeMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -400,6 +400,9 @@ namespace StajBul.WebUI.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
