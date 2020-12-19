@@ -1,0 +1,17 @@
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\bin\Release\netcoreapp3.1\StajBul.Service.deps.json
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\bin\Release\netcoreapp3.1\StajBul.Service.runtimeconfig.json
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\bin\Release\netcoreapp3.1\StajBul.Service.runtimeconfig.dev.json
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\bin\Release\netcoreapp3.1\StajBul.Service.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\bin\Release\netcoreapp3.1\StajBul.Service.pdb
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\bin\Release\netcoreapp3.1\StajBul.Data.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\bin\Release\netcoreapp3.1\StajBul.Entity.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\bin\Release\netcoreapp3.1\StajBul.Data.pdb
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\bin\Release\netcoreapp3.1\StajBul.Entity.pdb
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Release\netcoreapp3.1\StajBul.Service.csprojAssemblyReference.cache
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Release\netcoreapp3.1\StajBul.Service.AssemblyInfoInputs.cache
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Release\netcoreapp3.1\StajBul.Service.AssemblyInfo.cs
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Release\netcoreapp3.1\StajBul.Service.csproj.CoreCompileInputs.cache
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Release\netcoreapp3.1\StajBul.Service.csproj.CopyComplete
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Release\netcoreapp3.1\StajBul.Service.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Release\netcoreapp3.1\StajBul.Service.pdb
+C:\Users\kutay\source\repos\StajBul\StajBul.Service\obj\Release\netcoreapp3.1\StajBul.Service.genruntimeconfig.cache

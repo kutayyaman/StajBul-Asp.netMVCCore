@@ -216,10 +216,14 @@ namespace StajBul.WebUI.Controllers
                     {
                         return Redirect(returnUrl ?? "/");
                     }
+                    else
+                    {
+                        ModelState.AddModelError("", "Geçersiz Kullanıcı Adı Veya Şifre");
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("UserName", "Geçersiz Kullanıcı Adı Veya Şifre");
+                    ModelState.AddModelError("", "Geçersiz Kullanıcı Adı Veya Şifre");
                 }
                 
             }
@@ -370,7 +374,7 @@ namespace StajBul.WebUI.Controllers
             {
                 string token = await userManager.GeneratePasswordResetTokenAsync(user);
                 string link = "https://localhost:44319/User/ResetPassword?Email=" + user.Email + "&Token=" + token;
-                var message = new Message(new string[] { user.Email.ToString() }, "StajBul.com Şifreni Sıfırla", "Stajbul Şifreni Sıfırlaman İçin Link: "+link);
+                var message = new Message(new string[] { user.Email.ToString() }, "StajimiBul.com Şifreni Sıfırla", "StajimiBul Şifreni Sıfırlaman İçin Link: " + link);
                 emailSender.SendEmail(message);
                 TempData["message"] = "Şifrenizi Sıfırlamanız İçin Mail Yolladık. Eğer Maili Göremiyorsanız Spam Kısmına Bakın Oraya Atmış Olabilir.";
                 return RedirectToAction("Login");

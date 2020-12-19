@@ -165,7 +165,7 @@ namespace StajBul.WebUI.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")] //burada tek tek rolleri atamaktansa hepsini tek bir kere database ile iletisim kurarak yap bunu duzel cunku suan 100 kisiyi degistirirse 100 kere databaseye baglanip baglantiyi kesecek bunu 1'e dusurebiliriz.
         public async Task<IActionResult> EditPost(RoleEditModel roleEditModel)
         {
             IdentityResult result;

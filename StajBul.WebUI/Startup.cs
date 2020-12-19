@@ -81,7 +81,7 @@ namespace StajBul.WebUI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
+        public async void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -109,7 +109,8 @@ namespace StajBul.WebUI
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //SeedData.Seed(serviceProvider.GetRequiredService<StajBulContext>());
+            SeedData.SeedAsync(serviceProvider.GetRequiredService<StajBulContext>(), serviceProvider, Configuration).Wait();
+
         }
     }
 }
