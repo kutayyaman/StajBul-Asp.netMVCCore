@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EmailService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,13 +20,15 @@ namespace StajBul.WebUI.Controllers
         private IAddressService addressService;
         private ICityService cityService;
         private UserManager<User> userManager;
-        public AnnouncementController(IAnnouncementService announcementService, ICategoryService categoryService, IAddressService addressService,ICityService cityService, UserManager<User> userManager)
+        private readonly IEmailSender emailSender;
+        public AnnouncementController(IAnnouncementService announcementService, ICategoryService categoryService, IAddressService addressService,ICityService cityService, UserManager<User> userManager,IEmailSender emailSender)
         {
             this.announcementService = announcementService;
             this.categoryService = categoryService;
             this.addressService = addressService;
             this.cityService = cityService;
             this.userManager = userManager;
+            this.emailSender = emailSender;
         }
 
         [Authorize(Roles = "Admin")]
@@ -61,6 +64,9 @@ namespace StajBul.WebUI.Controllers
 
                 // announcement.Id = announcementService.getNextId();//Bu sql serverda hata veriyor
                 announcementService.addInternshipAnnouncement(announcement);
+                Category category = categoryService.getById(announcement.CategoryId);
+                var message = new Message(new string[] { "yamankutay1@gmail.com" }, "Yeni İlan Eklendi","Kullanıcı Adı : " + announcement.User.UserName + "\nAdı : "+ user.UserRealName + "\nİlan Başlığı : " + announcement.Title + "\nİlan İçeriği : " + announcement.Explanation + "\nKategorisi : " + category.CategoryName + "\nİlan Tipi : " +announcement.AnnouncementType);
+                emailSender.SendEmail(message);
                 return RedirectToAction("Details","Home", new { id = announcement.Id });
             }
 

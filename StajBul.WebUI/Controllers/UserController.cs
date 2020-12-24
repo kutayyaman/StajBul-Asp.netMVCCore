@@ -374,9 +374,9 @@ namespace StajBul.WebUI.Controllers
             {
                 string token = await userManager.GeneratePasswordResetTokenAsync(user);
                 string link = "https://localhost:44319/User/ResetPassword?Email=" + user.Email + "&Token=" + token;
-                var message = new Message(new string[] { user.Email.ToString() }, "StajimiBul.com Şifreni Sıfırla", "StajimiBul Şifreni Sıfırlaman İçin Link: " + link);
+                var message = new Message(new string[] { user.Email.ToString() }, "StajimiBul.com Şifreni Sıfırla","Kullanıcı Adınız : "+ user.UserName +"\n"+ "StajimiBul Şifreni Sıfırlaman İçin Link: " + link);
                 emailSender.SendEmail(message);
-                TempData["message"] = "Şifrenizi Sıfırlamanız İçin Mail Yolladık. Eğer Maili Göremiyorsanız Spam Kısmına Bakın Oraya Atmış Olabilir.";
+                TempData["message"] = "Şifrenizi Sıfırlamanız İçin Mail Yolladık 1-2 DK Gecikmeler Olabilir. Eğer Maili Göremiyorsanız Spam Kısmına Bakın Oraya Atmış Olabilir.";
                 return RedirectToAction("Login");
 
             }

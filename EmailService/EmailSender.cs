@@ -3,6 +3,7 @@ using MimeKit;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace EmailService
 {
@@ -18,7 +19,8 @@ namespace EmailService
         {
             var emailMessage = CreateEmailMessage(message);
 
-            Send(emailMessage);
+            Thread thr = new Thread(new ThreadStart(() => Send(emailMessage))); // ilan olustururken beklememsi icin mail gonderme islemini thread ile yaptim.
+            thr.Start();
         }
 
         private MimeMessage CreateEmailMessage(Message message)
