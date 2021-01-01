@@ -304,6 +304,11 @@
         "runtime": {
           "StajBul.WebUI.dll": {}
         },
+        "resources": {
+          "en/StajBul.WebUI.resources.dll": {
+            "locale": "en"
+          }
+        },
         "compile": {
           "StajBul.WebUI.dll": {}
         }
