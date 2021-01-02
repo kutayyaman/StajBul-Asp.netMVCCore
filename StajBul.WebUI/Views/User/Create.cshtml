@@ -20,7 +20,7 @@
 
     <div class="text-danger" asp-validation-summary="All"></div>
 
-    <form class="p-1 m-1" asp-controller="User" asp-action="Create" method="post">
+    <form id="createForm" onmousedown="changed(this)" class="p-1 m-1" asp-controller="User" asp-action="Create" method="post">
         <div class="form-group">
             <label asp-for="UserRealName">@Html.LabelFor(model => model.UserRealName)</label>
             <input asp-for="UserRealName" class="form-control">
@@ -51,8 +51,23 @@
             <input asp-for="Age" class="form-control">
             <div><span class="text-danger" asp-validation-for="Age"></span></div>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">@Localizer["SignUp"]</button>
+        <button type="submit" id="createBtn" class="btn btn-primary btn-lg btn-block mb-3">@Localizer["SignUp"]</button>
     </form>
 
 </div>
 
+<script>
+    var createBtn = document.getElementById("createBtn");
+    createBtn.addEventListener("click", createBtnClicked);
+    function createBtnClicked(element) {
+        console.log(element);
+        createBtn.hidden = true;
+    }
+
+    function changed(element) {
+        if (createBtn.hidden === true) {
+            createBtn.hidden = false;
+        }
+
+    }
+</script>
