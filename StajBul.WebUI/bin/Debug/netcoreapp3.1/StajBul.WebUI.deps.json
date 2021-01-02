@@ -307,6 +307,9 @@
         "resources": {
           "en/StajBul.WebUI.resources.dll": {
             "locale": "en"
+          },
+          "tr/StajBul.WebUI.resources.dll": {
+            "locale": "tr"
           }
         },
         "compile": {

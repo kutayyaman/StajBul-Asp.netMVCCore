@@ -208,7 +208,15 @@ C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\runtim
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\en\StajBul.WebUI.resources.dll
-C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\StajBul.WebUI.Resources.Views.Home.Index.en.resources
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\StajBul.WebUI.csproj.GenerateResource.cache
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\SelectLanguagePartial.cshtml.g.cs
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\en\StajBul.WebUI.resources.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\bin\Debug\netcoreapp3.1\tr\StajBul.WebUI.resources.dll
 C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\en\StajBul.WebUI.resources.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\tr\StajBul.WebUI.resources.dll
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\StajBul.WebUI.Resources.Views.Shared._Layout.en.resources
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\StajBul.WebUI.Resources.Views.Shared._Layout.tr.resources
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\StajBul.WebUI.Resources.Views.Shared._SearchBar.en.resources
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\StajBul.WebUI.Resources.Views.Shared._SearchBar.tr.resources
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\StajBul.WebUI.Resources.Views.Shared.SelectLanguagePartial.en.resources
+C:\Users\kutay\source\repos\StajBul\StajBul.WebUI\obj\Debug\netcoreapp3.1\StajBul.WebUI.Resources.Views.Shared.SelectLanguagePartial.tr.resources

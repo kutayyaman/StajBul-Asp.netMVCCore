@@ -47,20 +47,20 @@ namespace StajBul.WebUI
                 .AddDataAnnotationsLocalization();
 
             services.Configure<RequestLocalizationOptions>(
-        opts =>
-        {
-            var supportedCultures = new List<CultureInfo>
-            {
-                new CultureInfo("en"),
+               opts =>
+               {
+                   var supportedCultures = new List<CultureInfo>
+              {
+                
                 new CultureInfo("tr"),
-            };
+                new CultureInfo("en")
 
-            opts.DefaultRequestCulture = new RequestCulture("en");
-            // Formatting numbers, dates, etc.
-            opts.SupportedCultures = supportedCultures;
-            // UI strings that we have localized.
-            opts.SupportedUICultures = supportedCultures;
-        });
+              };
+
+                   opts.DefaultRequestCulture = new RequestCulture("tr");
+                   opts.SupportedCultures = supportedCultures;
+                   opts.SupportedUICultures = supportedCultures;
+               });
 
 
             var emailConfig = Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();

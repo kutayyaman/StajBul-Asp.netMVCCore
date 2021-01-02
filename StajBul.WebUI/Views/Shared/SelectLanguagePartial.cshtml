@@ -1,0 +1,108 @@
+﻿@using System.Threading.Tasks
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+
+@*<select id="culture" name="culture" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems"></select>*@
+@foreach (var culture in cultureItems)
+{           
+        <li class="nav-item">
+            <div style="cursor: pointer" class="culture nav-link active" id="@culture.Value">
+                <img src=@Url.Content("~/images/"+ culture.Value+".png") class="m-1">
+            </div>
+        </li>
+            
+}
+<div id="toggle" style="cursor: pointer ;" class="text-white nav-link active">
+    @Localizer["Language"]
+</div>
+
+
+
+
+<script>
+
+    var elements = document.getElementsByClassName("culture");
+    var toggle = document.getElementById("toggle");
+    toggled();
+    toggle.addEventListener("click", toggled, false);
+    for (var i = 0; i < elements.length; i++) {
+        (function (index) {
+            elements[index].addEventListener("click",clicked,false)
+        })(i);
+    }
+
+    function clicked(value) {
+        var culture = $(value).attr("path")[1].getAttribute('id');
+        $.ajax({
+                url: "/Home/SetLanguage/",
+                type: "POST",
+                data: {
+                    "culture": culture
+                },
+                beforeSend: function () {
+
+                },
+                success: function (data) {
+                    location.reload();
+                },
+                error: function () {
+                },
+                complete: function () {
+                }
+            });
+    }
+
+    function toggled(value) {
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i].style.display === "none") {
+                elements[i].style.display = "block"
+            }
+            else {
+                elements[i].style.display = "none"
+            }
+        }
+    }
+
+    //$(document).ready(function () {
+    //    $("#ajax-loader").hide();
+
+    //    $("#culture").change(function () {
+
+    //        $.ajax({
+    //            url: "/Home/SetLanguage/",
+    //            type: "POST",
+    //            data: {
+    //                "culture": $("#culture").val()
+    //            },
+    //            beforeSend: function () {
+
+    //            },
+    //            success: function (data) {
+    //                location.reload();
+    //            },
+    //            error: function () {
+    //            },
+    //            complete: function () {
+    //            }
+    //        });
+
+
+    //    })
+    //})
+</script>

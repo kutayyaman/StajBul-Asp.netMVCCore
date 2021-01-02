@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using StajBul.Entity;
 using StajBul.Service;
@@ -41,6 +43,18 @@ namespace StajBul.WebUI.Controllers
         public IActionResult About()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult SetLanguage(string culture)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddDays(1) }
+            );
+
+            return StatusCode(200);
         }
     }
 }

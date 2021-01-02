@@ -43,8 +43,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Views.Home.Index.en.resx">
+    <Compile Update="Resources\Views.Shared._Layout.tr.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Views.Shared._Layout.tr.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Views.Shared._Layout.tr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Views.Shared._Layout.tr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
