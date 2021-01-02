@@ -10,9 +10,11 @@ namespace StajBul.WebUI.Models
     {
         [Required]
         [UIHint("email")]
+        [Display(Name = "UserName")]
         public string UserName { get; set; }
         [Required]
         [UIHint("password")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
     }
 }

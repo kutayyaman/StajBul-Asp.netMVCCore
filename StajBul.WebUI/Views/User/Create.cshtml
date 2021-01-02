@@ -15,43 +15,43 @@
 }
 
 <div class="container">
-    <h1>Üye Ol</h1>
+    <h1>@Localizer["SignUp"]</h1>
     <hr />
 
     <div class="text-danger" asp-validation-summary="All"></div>
 
     <form class="p-1 m-1" asp-controller="User" asp-action="Create" method="post">
         <div class="form-group">
-            <label asp-for="UserRealName">Adınız</label>
+            <label asp-for="UserRealName">@Html.LabelFor(model => model.UserRealName)</label>
             <input asp-for="UserRealName" class="form-control">
             <div><span class="text-danger" asp-validation-for="UserRealName"></span></div>
         </div>
         <div class="form-group">
-            <label asp-for="UserSurname">Soyadınız</label>
+            <label asp-for="UserSurname">@Html.LabelFor(model => model.UserSurname)</label>
             <input asp-for="UserSurname" class="form-control">
             <div><span class="text-danger" asp-validation-for="UserSurname"></span></div>
         </div>
         <div class="form-group">
-            <label asp-for="UserName">Kullanıcı Adınız</label>
+            <label asp-for="UserName">@Html.LabelFor(model => model.UserName)</label>
             <input asp-for="UserName" class="form-control">
             <div><span class="text-danger" asp-validation-for="UserName"></span></div>
         </div>
         <div class="form-group">
-            <label asp-for="Email">Mail Adresiniz</label>
+            <label asp-for="Email">@Html.LabelFor(model => model.Email)</label>
             <input asp-for="Email" class="form-control">
             <div><span class="text-danger" asp-validation-for="Email"></span></div>
         </div>
         <div class="form-group">
-            <label asp-for="Password">Şifreniz</label>
+            <label asp-for="Password">@Html.LabelFor(model => model.Password)</label>
             <input type="password" asp-for="Password" class="form-control">
             <div><span class="text-danger" asp-validation-for="Password"></span></div>
         </div>
         <div class="form-group">
-            <label asp-for="Age">Yaşınız</label>
+            <label asp-for="Age">@Html.LabelFor(model => model.Age)</label>
             <input asp-for="Age" class="form-control">
             <div><span class="text-danger" asp-validation-for="Age"></span></div>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">Üye Ol</button>
+        <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">@Localizer["SignUp"]</button>
     </form>
 
 </div>

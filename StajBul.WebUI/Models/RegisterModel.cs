@@ -9,23 +9,29 @@ namespace StajBul.WebUI.Models
 {
     public class RegisterModel
     {
-        [Required(ErrorMessage = "Adınızı Girmelisiniz")]
+        [Required(ErrorMessage = "You should enter your name")]
+        [Display(Name = "UserRealName")]
         public string UserRealName { get; set; }
 
-        [Required(ErrorMessage ="Kullanıcı Adınızı Girmelisiniz")]
+        [Required(ErrorMessage = "You should enter your username")]
+        [Display(Name = "UserName")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Şifrenizi Girmelisiniz")]
+        [Required(ErrorMessage = "You should enter your password")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Mail Adresinizi Girmelisiniz")]
+        [Required(ErrorMessage = "You should enter your mail")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Soyadınızı Girmelisiniz")]
+        [Required(ErrorMessage = "You should enter your surname")]
+        [Display(Name = "UserSurname")]
         public string UserSurname { get; set; }
 
-        [Range(1, 150, ErrorMessage = "Yaşınız 1'den küçük veya gerçek dışı büyüklükte olamaz.")]
-        [Required(ErrorMessage = "Yaşınızı Girmelisiniz")]
+        [Range(1, 150, ErrorMessage = "Your age cannot be less than 1 or unreal")]
+        [Required(ErrorMessage = "You should enter your age")]
+        [Display(Name = "Age")]
         public int Age { get; set; }
         public RowStatus RowStatus { get; set; } = RowStatus.ACTIVE;
     }
