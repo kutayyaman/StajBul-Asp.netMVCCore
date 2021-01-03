@@ -108,7 +108,7 @@ namespace StajBul.WebUI.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> EditPost(string Id, string Password, string Email, int Age)
+        public async Task<IActionResult> EditPost(string Id, string Password, string Email, int Age, string UserName)
         {
 
             var user = await userManager.FindByIdAsync(Id);
@@ -120,7 +120,7 @@ namespace StajBul.WebUI.Controllers
             {
                 user.Email = Email;
                 user.Age = Age;
-
+                user.UserName = UserName;
                 IdentityResult validPass = null;
                 IdentityResult validUser = null;
                 if (!string.IsNullOrEmpty(Password))
@@ -365,6 +365,11 @@ namespace StajBul.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> IForgetMyPassword(string email)
         {
+            if (string.IsNullOrEmpty(email))
+            {
+                ModelState.AddModelError("", "Geçerli bir mail adresi girmediniz");
+                return View();
+            }
             User user = await userManager.FindByEmailAsync(email);
             if(user == null)
             {
