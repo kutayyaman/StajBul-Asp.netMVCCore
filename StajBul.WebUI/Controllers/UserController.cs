@@ -6,6 +6,7 @@ using EmailService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using StajBul.Entity;
 using StajBul.Service;
 using StajBul.WebUI.Models;
@@ -23,8 +24,9 @@ namespace StajBul.WebUI.Controllers
         private SignInManager<User> signInManager;
         private IAnnouncementService announcementService;
         private readonly IEmailSender emailSender;
+        private readonly IStringLocalizer<UserController> localizer;
 
-        public UserController(IUserService userService, UserManager<User> userManager, IPasswordValidator<User> passwordValidator, IPasswordHasher<User> passwordHasher, IUserValidator<User> userValidator, SignInManager<User> signInManager, IAnnouncementService announcementService, IEmailSender emailSender)
+        public UserController(IUserService userService, UserManager<User> userManager, IPasswordValidator<User> passwordValidator, IPasswordHasher<User> passwordHasher, IUserValidator<User> userValidator, SignInManager<User> signInManager, IAnnouncementService announcementService, IEmailSender emailSender, IStringLocalizer<UserController> localizer)
         {
             this.userService = userService;
             this.userManager = userManager;
@@ -34,6 +36,7 @@ namespace StajBul.WebUI.Controllers
             this.signInManager = signInManager;
             this.announcementService = announcementService;
             this.emailSender = emailSender;
+            this.localizer = localizer;
         }
 
         [Authorize]
@@ -367,7 +370,8 @@ namespace StajBul.WebUI.Controllers
         {
             if (string.IsNullOrEmpty(email))
             {
-                ModelState.AddModelError("", "Geçerli bir mail adresi girmediniz");
+
+                ModelState.AddModelError("", localizer["YouShouldEnterValidMail"]);
                 return View();
             }
             User user = await userManager.FindByEmailAsync(email);
