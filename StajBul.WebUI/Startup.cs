@@ -22,6 +22,7 @@ using StajBul.Entity;
 using StajBul.Service;
 using StajBul.Service.Impl;
 using StajBul.WebUI.Infrastructure;
+using StajBul.WebUI.Util;
 
 namespace StajBul.WebUI
 {
@@ -38,47 +39,12 @@ namespace StajBul.WebUI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
 
-            services.AddMvc()
-                .AddViewLocalization(
-                    LanguageViewLocationExpanderFormat.Suffix,
-                    opts => { opts.ResourcesPath = "Resources"; })
-                .AddDataAnnotationsLocalization();
-
-            services.Configure<RequestLocalizationOptions>(
-               opts =>
-               {
-                   var supportedCultures = new List<CultureInfo>
-              {
-                
-                new CultureInfo("tr"),
-                new CultureInfo("en")
-
-              };
-
-                   opts.DefaultRequestCulture = new RequestCulture("tr");
-                   opts.SupportedCultures = supportedCultures;
-                   opts.SupportedUICultures = supportedCultures;
-               });
-
+            AddDependency.addLocalization(services);
 
             var emailConfig = Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
             services.AddSingleton(emailConfig);
-            services.AddScoped<IEmailSender, EmailSender>();
-
-            services.AddTransient<IAddressRepo, EfAddressRepoImpl>();
-            services.AddTransient<IAnnouncementRepo, EfAnnouncementRepoImpl>();
-            services.AddTransient<ICategoryRepo, EfCategoryRepoImpl>();
-            services.AddTransient<ICityRepo, EfCityRepoImpl>();
-            services.AddTransient<IUserRepo, EfUserRepoImpl>();
-
-            services.AddTransient<IAddressService, AddressServiceImpl>();
-            services.AddTransient<IAnnouncementService, AnnouncementServiceImpl>();
-            services.AddTransient<ICategoryService, CategoryServiceImpl>();
-            services.AddTransient<ICityService, CityServiceImpl>();
-            services.AddTransient<IUserService, UserServiceImpl>();
-
+            AddDependency.addAllDependencies(services);
             //services.AddDbContext<StajBulContext>(options =>
             //options.UseNpgsql(Configuration.GetConnectionString("StajBulConnectionPostgreSQL"), b=>b.MigrationsAssembly("StajBul.WebUI")));
 
@@ -92,8 +58,7 @@ namespace StajBul.WebUI
                                                                     opt.LoginPath = "/User/Login";
                                                                 });
 
-            services.AddTransient<IPasswordValidator<User>, CustomPasswordValidator>();
-            services.AddTransient<IUserValidator<User>, CustomUserValidator>();
+            
             services.AddIdentity<User, IdentityRole<int>>(options => 
             {
                 options.Password.RequiredLength = 7;
